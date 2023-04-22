@@ -4,9 +4,11 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
+import br.com.rodrigo.naoreveze.fragments.HomeFragment
 import br.com.rodrigo.naoreveze.model.Musculo
 
 class AdapterMusculos(
@@ -20,35 +22,37 @@ class AdapterMusculos(
         return MusculoViewHolder(itemLista)
     }
 
-
     override fun onBindViewHolder(holder: MusculoViewHolder, position: Int) {
-        holder.textTituloMusculo.text = listaMusculos[position].titulo
-        listaMusculos[position].image.let { holder.imageMusculo.setImageResource(it) }
-        listaMusculos[position].background.let { holder.background.setBackgroundResource(it) }
-
-
-
+        val musculo = listaMusculos[position]
+        holder.bind(musculo)
     }
 
     override fun getItemCount() = listaMusculos.size
 
+    inner class MusculoViewHolder(
+        private val binding: MusculoItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-    inner class MusculoViewHolder(binding: MusculoItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        val textTituloMusculo = binding.textTituloMusculo
-        val imageMusculo = binding.imageMusculo
-        val background = binding.imageMusculo
-
-
+        fun bind(musculo: Musculo) {
+            binding.apply {
+                textTituloMusculo.text = musculo.titulo
+                imageMusculo.setImageResource(musculo.image)
+                imageMusculo.setBackgroundResource(musculo.background)
+            }
+        }
     }
 
-    private fun corRandom(): Int {
-        val listaGradient = listOf(
-            R.drawable.background_gradient,
-            R.drawable.background_laranja
-        )
-        return listaGradient.random()
-    }
+}
+
+
+private fun corRandom(): Int {
+    val listaGradient = listOf(
+        R.drawable.background_gradient,
+        R.drawable.background_laranja
+    )
+    return listaGradient.random()
 
 
 }
+
+

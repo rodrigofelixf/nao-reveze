@@ -1,15 +1,16 @@
 package br.com.rodrigo.naoreveze.fragments
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintLayout
+
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.adapter.AdapterMusculos
+
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
 import br.com.rodrigo.naoreveze.model.Musculo
@@ -35,13 +36,8 @@ class TreinoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerViewMusculos = binding.recyclerViewMusculos
-        recyclerViewMusculos.layoutManager = LinearLayoutManager(requireContext())
-        recyclerViewMusculos.setHasFixedSize(true)
-        adapterMusculos = AdapterMusculos(requireContext(), listaMusculos)
-        recyclerViewMusculos.adapter = adapterMusculos
+        initRecyclerView()
         itensDeLista()
-
 
     }
 
@@ -49,6 +45,17 @@ class TreinoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    private fun initRecyclerView() {
+
+        binding.recyclerViewMusculos.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapterMusculos = AdapterMusculos(context, listaMusculos)
+            adapter = adapterMusculos
+        }
+
+    }
+
 
     private fun itensDeLista() {
         val musculoPeitoral = Musculo(
@@ -65,8 +72,6 @@ class TreinoFragment : Fragment() {
         )
         listaMusculos.add(musculoPeitoral2)
 
-
     }
-
 
 }
