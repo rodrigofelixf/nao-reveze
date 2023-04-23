@@ -1,15 +1,16 @@
 package br.com.rodrigo.naoreveze.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.R
-import br.com.rodrigo.naoreveze.adapter.AdapterMusculos
+import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
 
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
@@ -20,8 +21,7 @@ class TreinoFragment : Fragment() {
     private var _binding: FragmentTreinoBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var adapterMusculos: AdapterMusculos
-    private val listaMusculos: MutableList<Musculo> = mutableListOf()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,8 +36,32 @@ class TreinoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initRecyclerView()
-        itensDeLista()
+
+        val list = listOf(
+            Musculo(
+                "Peitoral",
+                R.drawable.img_peitoral,
+                R.drawable.background_laranja),
+            Musculo(
+                "Costas Largas",
+                R.drawable.img_peitoral,
+                R.drawable.background_gradient)
+
+        )
+
+        binding.recyclerViewMusculos.adapter = MusculosAdapter(list) { item ->
+            when (item) {
+                list[0] -> {
+                    openFragment(HomeFragment())
+                }
+                else -> {
+
+                }
+            }
+        }
+
+        binding.recyclerViewMusculos.layoutManager = LinearLayoutManager(requireContext())
+
 
     }
 
@@ -46,15 +70,7 @@ class TreinoFragment : Fragment() {
         _binding = null
     }
 
-    private fun initRecyclerView() {
 
-        binding.recyclerViewMusculos.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapterMusculos = AdapterMusculos(context, listaMusculos)
-            adapter = adapterMusculos
-        }
-
-    }
 
 
     private fun itensDeLista() {
@@ -63,15 +79,22 @@ class TreinoFragment : Fragment() {
             R.drawable.img_peitoral,
             R.drawable.background_laranja
         )
-        listaMusculos.add(musculoPeitoral)
 
         val musculoPeitoral2 = Musculo(
             "Costas Largas",
             R.drawable.img_peitoral,
             R.drawable.background_gradient
         )
-        listaMusculos.add(musculoPeitoral2)
 
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+        transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
+        transaction.replace(R.id.container, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
 }
