@@ -1,19 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menu_perfil1"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/profile_icon"
         android:title="Perfil"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/menu_perfil2"
+        android:id="@+id/treinoFragment"
         android:icon="@drawable/profile_icon"
         android:title="perfil 2"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/menu_perfil3"
+        android:id="@+id/imcFragment"
         android:icon="@drawable/profile_icon"
         android:title="perfil 3"
         app:showAsAction="ifRoom" />
+
 </menu>

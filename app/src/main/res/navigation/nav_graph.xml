@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.HomeFragment"
+        android:label="HomeFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/treinoFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.TreinoFragment"
+        android:label="TreinoFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/peitoralFragment"
+        android:name="br.com.rodrigo.naoreveze.PeitoralFragment"
+        android:label="fragment_peitoral"
+        tools:layout="@layout/fragment_peitoral" />
+    <activity
+        android:id="@+id/mainActivity2"
+        android:name="br.com.rodrigo.naoreveze.MainActivity2"
+        android:label="activity_main2"
+        tools:layout="@layout/activity_main2" />
 </navigation>

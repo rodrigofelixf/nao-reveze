@@ -1,14 +1,14 @@
 package br.com.rodrigo.naoreveze.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import br.com.rodrigo.naoreveze.PeitoralFragment
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
 
@@ -18,9 +18,9 @@ import br.com.rodrigo.naoreveze.model.Musculo
 
 class TreinoFragment : Fragment() {
 
+
     private var _binding: FragmentTreinoBinding? = null
     private val binding get() = _binding!!
-
 
 
     override fun onCreateView(
@@ -30,6 +30,7 @@ class TreinoFragment : Fragment() {
     ): View {
         _binding = FragmentTreinoBinding.inflate(inflater, container, false)
         return binding.root
+
 
     }
 
@@ -41,19 +42,25 @@ class TreinoFragment : Fragment() {
             Musculo(
                 "Peitoral",
                 R.drawable.img_peitoral,
-                R.drawable.background_laranja),
+                R.drawable.background_laranja
+            ),
             Musculo(
                 "Costas Largas",
                 R.drawable.img_peitoral,
-                R.drawable.background_gradient)
+                R.drawable.background_gradient
+            )
 
         )
 
         binding.recyclerViewMusculos.adapter = MusculosAdapter(list) { item ->
             when (item) {
                 list[0] -> {
-                    openFragment(HomeFragment())
+                    val container = requireActivity().findViewById<ViewGroup>(R.id.nav_host_fragment)
+                    val novoFragment = PeitoralFragment()
+                    findNavController().navigate(R.id.peitoralFragment)
+
                 }
+
                 else -> {
 
                 }
@@ -69,8 +76,6 @@ class TreinoFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
 
     private fun itensDeLista() {
@@ -89,12 +94,10 @@ class TreinoFragment : Fragment() {
     }
 
     private fun openFragment(fragment: Fragment) {
-        val fragmentManager = requireActivity().supportFragmentManager
-        val transaction = fragmentManager.beginTransaction()
-        transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, fragment)
         transaction.commit()
     }
+
 
 }
