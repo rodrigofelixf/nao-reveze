@@ -2,12 +2,23 @@ package br.com.rodrigo.naoreveze
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import br.com.rodrigo.naoreveze.databinding.ActivityMainBinding
+import android.view.animation.AnimationUtils
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
+import br.com.rodrigo.naoreveze.databinding.FragmentPeitoralBinding
 import br.com.rodrigo.naoreveze.fragments.HomeFragment
 import br.com.rodrigo.naoreveze.fragments.TreinoFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var bottomNav : BottomNavigationView
+    private lateinit var navController: NavController
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,33 +26,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.menu_perfil1 -> {
-                    openFragment(HomeFragment())
-                    true
-                }
-                R.id.menu_perfil2 -> {
-                    openFragment(TreinoFragment())
-                    true
-                }
-                else -> false
-            }
-        }
+
+        bottomNav = findViewById(R.id.bottom_navigation)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.navController
+        bottomNav.setupWithNavController(navController)
+
+
+
+
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        // Define a tela inicial ao logar como o Treino
-        binding.bottomNavigation.selectedItemId = R.id.menu_perfil2
-    }
 
-    private fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-        transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+
+
 }
