@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.rodrigo.naoreveze.PeitoralFragment
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
 
@@ -22,6 +21,19 @@ class TreinoFragment : Fragment() {
     private var _binding: FragmentTreinoBinding? = null
     private val binding get() = _binding!!
 
+    private val listaDeMusculos = listOf(
+        Musculo(
+            "Peitoral",
+            R.drawable.img_peitoral,
+            R.drawable.background_laranja
+        ),
+        Musculo(
+            "Costas Largas",
+            R.drawable.img_peitoral,
+            R.drawable.background_gradient
+        )
+    )
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,43 +42,13 @@ class TreinoFragment : Fragment() {
     ): View {
         _binding = FragmentTreinoBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val list = listOf(
-            Musculo(
-                "Peitoral",
-                R.drawable.img_peitoral,
-                R.drawable.background_laranja
-            ),
-            Musculo(
-                "Costas Largas",
-                R.drawable.img_peitoral,
-                R.drawable.background_gradient
-            )
-
-        )
-
-        binding.recyclerViewMusculos.adapter = MusculosAdapter(list) { item ->
-            when (item) {
-                list[0] -> {
-                    val container = requireActivity().findViewById<ViewGroup>(R.id.nav_host_fragment)
-                    val novoFragment = PeitoralFragment()
-                    findNavController().navigate(R.id.peitoralFragment)
-
-                }
-
-                else -> {
-
-                }
-            }
-        }
-
+        clickRecyclerView()
         binding.recyclerViewMusculos.layoutManager = LinearLayoutManager(requireContext())
 
 
@@ -77,26 +59,17 @@ class TreinoFragment : Fragment() {
         _binding = null
     }
 
+    private fun clickRecyclerView() {
+        binding.recyclerViewMusculos.adapter = MusculosAdapter(listaDeMusculos) { item ->
+            when (item) {
+                listaDeMusculos[0] -> {
+                    findNavController().navigate(R.id.action_treinoFragment_to_peitoralFragment)
+                }
+                else -> {
 
-    private fun itensDeLista() {
-        val musculoPeitoral = Musculo(
-            "Peitoral",
-            R.drawable.img_peitoral,
-            R.drawable.background_laranja
-        )
-
-        val musculoPeitoral2 = Musculo(
-            "Costas Largas",
-            R.drawable.img_peitoral,
-            R.drawable.background_gradient
-        )
-
-    }
-
-    private fun openFragment(fragment: Fragment) {
-        val transaction = childFragmentManager.beginTransaction()
-        transaction.replace(R.id.nav_host_fragment, fragment)
-        transaction.commit()
+                }
+            }
+        }
     }
 
 
