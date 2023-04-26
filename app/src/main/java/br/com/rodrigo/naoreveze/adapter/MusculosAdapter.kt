@@ -2,7 +2,6 @@ package br.com.rodrigo.naoreveze.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
 import br.com.rodrigo.naoreveze.model.Musculo
 
@@ -47,24 +46,13 @@ class MusculosAdapter(
 
         fun bind(musculo: Musculo, onItemClick: (Musculo) -> Unit) {
 
-                binding.textTituloMusculo.text = musculo.titulo
-                binding.imageMusculo.setImageResource(musculo.image)
-                binding.imageMusculo.setBackgroundResource(musculo.background)
+            binding.textTituloMusculo.text = musculo.titulo
+            binding.imageMusculo.setImageResource(musculo.image)
+            binding.imageMusculo.setBackgroundResource(musculo.background)
 
             binding.root.setOnClickListener { onItemClick(musculo) }
         }
     }
-
-}
-
-
-private fun corRandom(): Int {
-    val listaGradient = listOf(
-        R.drawable.background_gradient,
-        R.drawable.background_laranja
-    )
-    return listaGradient.random()
-
 
 }
 
