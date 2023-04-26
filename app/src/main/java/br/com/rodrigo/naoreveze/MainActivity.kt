@@ -35,8 +35,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> {
                     navController.navigate(
                         R.id.homeFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.slide_in)
-                            .setExitAnim(R.anim.slide_out)
+                            .setEnterAnim(R.anim.fade_in)
+                            .setExitAnim(R.anim.fade_out)
                             .build()
                     )
                     true
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.treinoFragment -> {
                     navController.navigate(
                         R.id.treinoFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.slide_in)
-                            .setExitAnim(R.anim.slide_out)
+                            .setEnterAnim(R.anim.fade_in)
+                            .setExitAnim(R.anim.fade_out)
                             .build()
                     )
                     true

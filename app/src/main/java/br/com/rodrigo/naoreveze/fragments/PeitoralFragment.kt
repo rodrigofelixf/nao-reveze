@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentPeitoralBinding
@@ -14,22 +15,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class PeitoralFragment : Fragment() {
     private var _binding: FragmentPeitoralBinding? = null
     private val binding get() = _binding!!
+    private val bottomNavigationView by lazy { requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
+    private val imageView by lazy { requireActivity().findViewById<ImageView>(R.id.image_profile) }
 
-    private val bottomNavigationView by lazy {
-        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
-    }
-    private val imageView by lazy { requireActivity().findViewById<ImageView>(R.id.image_profile)}
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentPeitoralBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // esconde o bottomnavigatiom e os icones superiores
         bottomNavigationView.visibility = View.GONE
         imageView.visibility = View.GONE
+
+        val slideRight = AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right)
+        binding.txtPeitoralSubistituicao.startAnimation(slideRight)
+
+
 
 
     }

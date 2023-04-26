@@ -7,9 +7,10 @@ import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
 import br.com.rodrigo.naoreveze.model.Musculo
 
 class MusculosAdapter(
-    private val listaMusculos: List<Musculo>,
+    private var listaMusculos: List<Musculo>,
     private val onItemClick: (Musculo) -> Unit
 ) : RecyclerView.Adapter<MusculosAdapter.MusculoViewHolder>() {
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusculoViewHolder {
@@ -23,6 +24,21 @@ class MusculosAdapter(
     }
 
     override fun getItemCount() = listaMusculos.size
+
+
+
+    /**
+     * Esta função pública adiciona a lista de dados do objeto musculos do recyclerView para ser procurada no searchView.
+     * Observe que a listaMusculos esta sendo convertida para toset().toList() para nao haver itens duplicados quando o usuario voltar
+     * para tela novamente.
+     *
+     * @param listaMusculos lista de musculos
+     *
+     */
+    fun setFilteredList(listaMusculos: List<Musculo>) {
+        this.listaMusculos = listaMusculos
+        notifyDataSetChanged()
+    }
 
     class MusculoViewHolder(
         private val binding: MusculoItemBinding
