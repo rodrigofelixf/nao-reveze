@@ -4,34 +4,39 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-
-    <ImageView
-        android:id="@+id/image_musculo"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Elevated"
+        android:id="@+id/cardView_musculo"
         android:layout_width="match_parent"
-        android:layout_height="139dp"
+        android:layout_height="match_parent"
         android:layout_marginHorizontal="10dp"
-        android:foreground="?attr/selectableItemBackground"
         android:layout_marginTop="15dp"
-        android:background="@drawable/background_gradient"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_peitoral"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/text_titulo_musculo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:text="@string/text_peitoral"
-        app:layout_constraintBottom_toBottomOf="@id/image_musculo"
-        app:layout_constraintStart_toStartOf="@id/image_musculo" />
+        <ImageView
+            android:id="@+id/image_musculo"
+            android:layout_width="match_parent"
+            android:layout_height="139dp"
+            android:background="@drawable/background_shape_radius"
+            android:foreground="?attr/selectableItemBackground"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_peitoral" />
+
+        <TextView
+            android:id="@+id/text_titulo_musculo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
+            android:text="@string/text_peitoral"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

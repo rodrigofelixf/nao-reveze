@@ -52,6 +52,26 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.imcFragment -> {
+                    navController.navigate(
+                        R.id.imcFragment, null, NavOptions.Builder()
+                            .setEnterAnim(R.anim.fade_in)
+                            .setExitAnim(R.anim.fade_out)
+                            .build()
+                    )
+                    true
+                }
+
+                R.id.perfilFragment -> {
+                    navController.navigate(
+                        R.id.perfilFragment, null, NavOptions.Builder()
+                            .setEnterAnim(R.anim.fade_in)
+                            .setExitAnim(R.anim.fade_out)
+                            .build()
+                    )
+                    true
+                }
+
                 else -> false
             }
         }

@@ -5,6 +5,5 @@ import android.view.View
 data class Musculo(
     val titulo: String,
     val image: Int,
-    val background: Int,
 )
 

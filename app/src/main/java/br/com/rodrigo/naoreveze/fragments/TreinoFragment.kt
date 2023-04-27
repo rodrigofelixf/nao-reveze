@@ -1,13 +1,12 @@
 package br.com.rodrigo.naoreveze.fragments
 
-import android.content.Context
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Adapter
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.navigation.fragment.findNavController
@@ -98,36 +97,43 @@ class TreinoFragment : Fragment() {
         listaDeMusculos.add(
             Musculo(
                 "Peitoral",
-                R.drawable.img_peitoral,
-                R.drawable.background_gradient
-            )
-        )
-        listaDeMusculos.add(
-            Musculo(
-                "Ombros",
-                R.drawable.img_peitoral,
-                R.drawable.background_laranja
+                R.drawable.img_peitoral
             )
         )
         listaDeMusculos.add(
             Musculo(
                 "Costas",
-                R.drawable.img_peitoral,
-                R.drawable.background_gradient
+                R.drawable.img_costas1
             )
         )
         listaDeMusculos.add(
             Musculo(
-                "Quadriceps",
-                R.drawable.img_peitoral,
-                R.drawable.background_laranja
+                "Pernas",
+                R.drawable.img_pernas
             )
         )
         listaDeMusculos.add(
             Musculo(
-                "Peixoto",
-                R.drawable.img_peitoral,
-                R.drawable.background_laranja
+                "Bíceps e Tríceps",
+                R.drawable.img_triceps_biceps
+            )
+        )
+        listaDeMusculos.add(
+            Musculo(
+                "Ombros",
+                R.drawable.img_ombros
+            )
+        )
+        listaDeMusculos.add(
+            Musculo(
+                "Abdômen",
+                R.drawable.img_abdomen4
+            )
+        )
+        listaDeMusculos.add(
+            Musculo(
+                "Aeróbicos",
+                R.drawable.img_aerobico2
             )
         )
 

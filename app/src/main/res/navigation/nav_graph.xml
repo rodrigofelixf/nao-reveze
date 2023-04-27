@@ -22,7 +22,17 @@
     </fragment>
     <fragment
         android:id="@+id/peitoralFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.PeitoralFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.musculos.PeitoralFragment"
         android:label="fragment_peitoral"
         tools:layout="@layout/fragment_peitoral" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/imcFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.ImcFragment"
+        android:label="fragment_imc"
+        tools:layout="@layout/fragment_imc" />
 </navigation>

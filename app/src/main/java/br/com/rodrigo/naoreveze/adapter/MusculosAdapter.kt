@@ -48,7 +48,7 @@ class MusculosAdapter(
 
             binding.textTituloMusculo.text = musculo.titulo
             binding.imageMusculo.setImageResource(musculo.image)
-            binding.imageMusculo.setBackgroundResource(musculo.background)
+
 
             binding.root.setOnClickListener { onItemClick(musculo) }
         }

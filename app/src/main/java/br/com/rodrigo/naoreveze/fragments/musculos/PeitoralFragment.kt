@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments
+package br.com.rodrigo.naoreveze.fragments.musculos
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,7 @@ class PeitoralFragment : Fragment() {
     private var _binding: FragmentPeitoralBinding? = null
     private val binding get() = _binding!!
     private val bottomNavigationView by lazy { requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
-    private val imageView by lazy { requireActivity().findViewById<ImageView>(R.id.image_profile) }
+
 
 
     override fun onCreateView(
@@ -31,9 +31,9 @@ class PeitoralFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // esconde o bottomnavigatiom e os icones superiores
+        // esconde o bottomnavigatiom
         bottomNavigationView.visibility = View.GONE
-        imageView.visibility = View.GONE
+
 
         val slideRight = AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right)
         binding.txtPeitoralSubistituicao.startAnimation(slideRight)
@@ -47,7 +47,7 @@ class PeitoralFragment : Fragment() {
         super.onDestroyView()
         _binding = null
         bottomNavigationView.visibility = View.VISIBLE
-        imageView.visibility = View.VISIBLE
+        
     }
 
 

@@ -2,19 +2,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/profile_icon"
-        android:title="Perfil"
+        android:icon="@drawable/inc_home"
+        android:title="Página inicial"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/treinoFragment"
-        android:icon="@drawable/profile_icon"
-        android:title="perfil 2"
+        android:icon="@drawable/inc_treino"
+        android:title="Treino"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/imcFragment"
-        android:icon="@drawable/profile_icon"
-        android:title="perfil 3"
+        android:icon="@drawable/inc_imc"
+        android:title="Imc"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/perfilFragment"
+        android:icon="@drawable/inc_profile"
+        android:title="Perfil"
         app:showAsAction="ifRoom" />
 
 </menu>
