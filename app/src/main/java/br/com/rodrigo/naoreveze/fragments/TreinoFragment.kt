@@ -18,6 +18,7 @@ import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
 import br.com.rodrigo.naoreveze.model.Musculo
+import java.text.Normalizer
 import java.util.Locale
 import kotlin.collections.ArrayList
 
@@ -43,23 +44,21 @@ class TreinoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.textViewResultadoEncontrado.visibility = View.GONE
+
+
+
+
+
         initRecyclerView()
         clickRecyclerView()
         animacaoRightToLeft(binding.recyclerViewMusculos)
-        animacaoRightToLeft(binding.treinoCardView)
+        animacaoRightToLeft(binding.searchCardViewTreino)
         addDataToList()
+        searchView()
 
 
-        binding.searchViewTreino.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                filterList(newText)
-                return true
-            }
-        } )
 
     }
 
@@ -77,22 +76,49 @@ class TreinoFragment : Fragment() {
 
     }
 
-    private fun filterList(query : String?) {
+    private fun searchView() {
+        binding.searchViewTreino.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                binding.textViewResultadoEncontrado.visibility = View.GONE
+                filterList(newText)
+                return true
+            }
+        } )
+    }
+
+    private fun filterList(query: String?) {
         if (query != null) {
             val filteredList = ArrayList<Musculo>()
-            for (i in listaDeMusculos ) {
-                if (i.titulo.lowercase(Locale.ROOT).contains(query)) {
+            val normalizedQuery = Normalizer.normalize(query, Normalizer.Form.NFD)
+                .replace("[^\\p{ASCII}]".toRegex(), "")
+                .lowercase(Locale.ROOT)
+
+            for (i in listaDeMusculos) {
+                val normalizedTitle = Normalizer.normalize(i.titulo, Normalizer.Form.NFD)
+                    .replace("[^\\p{ASCII}]".toRegex(), "")
+                    .lowercase(Locale.ROOT)
+
+                if (normalizedTitle.startsWith(normalizedQuery)) {
                     filteredList.add(i)
                 }
             }
+
+            musculosAdapter = binding.recyclerViewMusculos.adapter as MusculosAdapter
+
             if (filteredList.isEmpty()) {
-                Toast.makeText(requireContext(), "Musculo nao encontrado", Toast.LENGTH_SHORT).show()
+                musculosAdapter.setFilteredList(emptyList())
+                binding.textViewResultadoEncontrado.visibility = View.VISIBLE
             } else {
-                musculosAdapter = binding.recyclerViewMusculos.adapter as MusculosAdapter
                 musculosAdapter.setFilteredList(filteredList.toSet().toList())
             }
         }
     }
+
+
     private fun addDataToList() {
         listaDeMusculos.add(
             Musculo(

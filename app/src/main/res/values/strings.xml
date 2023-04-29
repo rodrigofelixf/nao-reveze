@@ -5,4 +5,5 @@
     <string name="text_peitoral">Peitoral</string>
     <string name="text_o_que_esta_treinando">O que está treinando?</string>
     <string name="text_qual_exercicio_subistituir">Qual exercício você deseja substituir?</string>
+    <string name="nenhum_resultado_encontrado">Nenhum resultado encontrado.</string>
 </resources>
