@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import androidx.navigation.fragment.findNavController
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentPeitoralBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,6 +38,10 @@ class PeitoralFragment : Fragment() {
 
         val slideRight = AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right)
         binding.txtPeitoralSubistituicao.startAnimation(slideRight)
+
+        binding.iconBack.setOnClickListener {
+            findNavController().navigate(R.id.action_peitoralFragment_to_treinoFragment)
+        }
 
 
 

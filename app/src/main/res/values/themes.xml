@@ -10,13 +10,10 @@
 
     <style name="Search_View_theme">
         <item name="colorSecondary">#8A9399</item>
-        <item name="searchBackground">#1A2229</item>
         <item name="android:inputType">text</item>
         <item name="android:hint">@string/text_o_que_esta_treinando</item>
-        <item name="hintColor">#8A9399</item>
-        <item name="backIconTint">#8A9399</item>
         <item name="android:textColor">@color/white</item>
-        <item name="iconsTint">#8A9399</item>
+
     </style>
 
     <style name="Base_ToolbarStyle">

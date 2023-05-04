@@ -24,7 +24,13 @@
         android:id="@+id/peitoralFragment"
         android:name="br.com.rodrigo.naoreveze.fragments.musculos.PeitoralFragment"
         android:label="fragment_peitoral"
-        tools:layout="@layout/fragment_peitoral" />
+        tools:layout="@layout/fragment_peitoral" >
+        <action
+            android:id="@+id/action_peitoralFragment_to_treinoFragment"
+            app:destination="@id/treinoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
+    </fragment>
     <fragment
         android:id="@+id/perfilFragment"
         android:name="br.com.rodrigo.naoreveze.fragments.PerfilFragment"
