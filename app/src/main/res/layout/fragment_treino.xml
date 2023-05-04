@@ -2,7 +2,6 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/background_gradient_roxo"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,7 +16,6 @@
             android:layout_height="wrap_content"
             android:text="@string/nenhum_resultado_encontrado"
             android:textSize="22sp"
-            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_cardView_treino"
@@ -29,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="8dp"
-            app:cardElevation="12dp"
+            app:cardElevation="10dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toTopOf="@id/recyclerViewMusculos"
             app:layout_constraintEnd_toEndOf="parent"
