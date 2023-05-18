@@ -14,8 +14,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class PeitoralFragment : Fragment() {
-    private var _binding: FragmentPeitoralBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { FragmentPeitoralBinding.inflate(layoutInflater) }
+
+    // captura a view do bottomnavigation
     private val bottomNavigationView by lazy { requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation) }
 
 
@@ -25,7 +26,6 @@ class PeitoralFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPeitoralBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,7 +40,7 @@ class PeitoralFragment : Fragment() {
         binding.txtPeitoralSubistituicao.startAnimation(slideRight)
 
         binding.iconBack.setOnClickListener {
-            findNavController().navigate(R.id.action_peitoralFragment_to_treinoFragment)
+            findNavController().popBackStack()
         }
 
 
@@ -48,9 +48,8 @@ class PeitoralFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onDestroy() {
+        super.onDestroy()
         bottomNavigationView.visibility = View.VISIBLE
         
     }

@@ -54,6 +54,7 @@
             app:layout_constraintTop_toBottomOf="@id/search_cardView_treino" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

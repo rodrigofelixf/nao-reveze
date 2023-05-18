@@ -3,11 +3,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
-import br.com.rodrigo.naoreveze.model.Musculo
+import br.com.rodrigo.naoreveze.model.MusculoModel
 
 class MusculosAdapter(
-    private var listaMusculos: List<Musculo>,
-    private val onItemClick: (Musculo) -> Unit
+    private var listaMusculoModels: List<MusculoModel>,
+    private val onItemClick: (MusculoModel) -> Unit
 ) : RecyclerView.Adapter<MusculosAdapter.MusculoViewHolder>() {
 
 
@@ -18,11 +18,11 @@ class MusculosAdapter(
     }
 
     override fun onBindViewHolder(holder: MusculoViewHolder, position: Int) {
-        val musculo = listaMusculos[position]
+        val musculo = listaMusculoModels[position]
         holder.bind(musculo, onItemClick = onItemClick)
     }
 
-    override fun getItemCount() = listaMusculos.size
+    override fun getItemCount() = listaMusculoModels.size
 
 
 
@@ -31,11 +31,11 @@ class MusculosAdapter(
      * Observe que a listaMusculos esta sendo convertida para toset().toList() para nao haver itens duplicados quando o usuario voltar
      * para tela novamente.
      *
-     * @param listaMusculos lista de musculos
+     * @param listaMusculoModels lista de musculos
      *
      */
-    fun setFilteredList(listaMusculos: List<Musculo>) {
-        this.listaMusculos = listaMusculos
+    fun setFilteredList(listaMusculoModels: List<MusculoModel>) {
+        this.listaMusculoModels = listaMusculoModels
         notifyDataSetChanged()
     }
 
@@ -44,13 +44,13 @@ class MusculosAdapter(
     ) : RecyclerView.ViewHolder(binding.root){
 
 
-        fun bind(musculo: Musculo, onItemClick: (Musculo) -> Unit) {
+        fun bind(musculoModel: MusculoModel, onItemClick: (MusculoModel) -> Unit) {
 
-            binding.textTituloMusculo.text = musculo.titulo
-            binding.imageMusculo.setImageResource(musculo.image)
+            binding.textTituloMusculo.text = musculoModel.titulo
+            binding.imageMusculo.setImageResource(musculoModel.image)
 
 
-            binding.root.setOnClickListener { onItemClick(musculo) }
+            binding.root.setOnClickListener { onItemClick(musculoModel) }
         }
     }
 

@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
         initBottomNavigation()
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->

@@ -40,5 +40,30 @@
         android:id="@+id/imcFragment"
         android:name="br.com.rodrigo.naoreveze.fragments.ImcFragment"
         android:label="fragment_imc"
-        tools:layout="@layout/fragment_imc" />
+        tools:layout="@layout/fragment_imc" >
+        <action
+            android:id="@+id/action_imcFragment_to_calculateImcFragment"
+            app:destination="@id/calculateImcFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
+        <argument
+            android:name="altura"
+            app:argType="string"
+            android:defaultValue="0" />
+        <argument
+            android:name="peso"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/calculateImcFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.CalculateImcFragment"
+        android:label="fragment_calculate_imc"
+        tools:layout="@layout/fragment_calculate_imc" >
+        <action
+            android:id="@+id/action_calculateImcFragment_to_imcFragment"
+            app:destination="@id/imcFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
+    </fragment>
 </navigation>

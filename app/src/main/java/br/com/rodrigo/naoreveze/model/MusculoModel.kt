@@ -1,8 +1,6 @@
 package br.com.rodrigo.naoreveze.model
 
-import android.view.View
-
-data class Musculo(
+data class MusculoModel(
     val titulo: String,
     val image: Int,
 )

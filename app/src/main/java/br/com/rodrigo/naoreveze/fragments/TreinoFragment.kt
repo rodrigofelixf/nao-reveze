@@ -7,37 +7,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
+import br.com.rodrigo.naoreveze.databinding.FragmentImcBinding
 
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
-import br.com.rodrigo.naoreveze.model.Musculo
+import br.com.rodrigo.naoreveze.model.MusculoModel
+import br.com.rodrigo.naoreveze.viewmodel.ImcViewModel
 import java.text.Normalizer
 import java.util.Locale
 import kotlin.collections.ArrayList
 
 class TreinoFragment : Fragment() {
 
-
-    private var _binding: FragmentTreinoBinding? = null
-    private val binding get() = _binding!!
-
-    private var listaDeMusculos = ArrayList<Musculo>()
+    private var listaDeMusculoModels = ArrayList<MusculoModel>()
 
     private lateinit var musculosAdapter: MusculosAdapter
+
+    private val binding: FragmentTreinoBinding by lazy {
+        FragmentTreinoBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentTreinoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -69,10 +70,6 @@ class TreinoFragment : Fragment() {
     }
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
-
-
-
 
     }
 
@@ -92,12 +89,12 @@ class TreinoFragment : Fragment() {
 
     private fun filterList(query: String?) {
         if (query != null) {
-            val filteredList = ArrayList<Musculo>()
+            val filteredList = ArrayList<MusculoModel>()
             val normalizedQuery = Normalizer.normalize(query, Normalizer.Form.NFD)
                 .replace("[^\\p{ASCII}]".toRegex(), "")
                 .lowercase(Locale.ROOT)
 
-            for (i in listaDeMusculos) {
+            for (i in listaDeMusculoModels) {
                 val normalizedTitle = Normalizer.normalize(i.titulo, Normalizer.Form.NFD)
                     .replace("[^\\p{ASCII}]".toRegex(), "")
                     .lowercase(Locale.ROOT)
@@ -120,44 +117,44 @@ class TreinoFragment : Fragment() {
 
 
     private fun addDataToList() {
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Peitoral",
                 R.drawable.img_peitoral
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Costas",
                 R.drawable.img_costas1
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Pernas",
                 R.drawable.img_pernas
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Bíceps e Tríceps",
                 R.drawable.img_triceps_biceps
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Ombros",
                 R.drawable.img_ombros
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Abdômen",
                 R.drawable.img_abdomen4
             )
         )
-        listaDeMusculos.add(
-            Musculo(
+        listaDeMusculoModels.add(
+            MusculoModel(
                 "Aeróbicos",
                 R.drawable.img_aerobico2
             )
@@ -165,9 +162,9 @@ class TreinoFragment : Fragment() {
 
     }
     private fun clickRecyclerView() {
-        binding.recyclerViewMusculos.adapter = MusculosAdapter(listaDeMusculos) { item ->
+        binding.recyclerViewMusculos.adapter = MusculosAdapter(listaDeMusculoModels) { item ->
             when (item) {
-                listaDeMusculos[0] -> {
+                listaDeMusculoModels[0] -> {
                     findNavController().navigate(R.id.action_treinoFragment_to_peitoralFragment)
 
                 }

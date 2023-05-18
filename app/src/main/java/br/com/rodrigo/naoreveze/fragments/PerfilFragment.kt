@@ -1,53 +1,56 @@
 package br.com.rodrigo.naoreveze.fragments
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
 import br.com.rodrigo.naoreveze.R
+import br.com.rodrigo.naoreveze.databinding.FragmentHomeBinding
+import br.com.rodrigo.naoreveze.databinding.FragmentPerfilBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PerfilFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PerfilFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
+    private val binding: FragmentPerfilBinding by lazy {
+        FragmentPerfilBinding.inflate(layoutInflater)
     }
+
+    private var progr = 0
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false)
+    ): View {
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PerfilFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PerfilFragment().apply {
-                arguments = Bundle().apply {
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        updateProgressBar()
+
+        binding.buttonIncr.setOnClickListener {
+            if (progr <= 90) {
+                progr += 10
+                updateProgressBar()
             }
+        }
+
+        binding.buttonDecr.setOnClickListener {
+            if (progr >= 10) {
+                progr -= 10
+                updateProgressBar()
+            }
+        }
+
+
+    }
+
+    private fun updateProgressBar() {
+        binding.progressBar.progress = progr
+        binding.textViewProgress.text = "$progr%"
     }
 }
