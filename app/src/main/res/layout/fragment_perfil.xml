@@ -6,42 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/CircularDeterminateProgressBar"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:progress="60" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_resultado_peso"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        app:cardBackgroundColor="#cdf3fa"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/text_view_progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
-        tools:text="60%" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button_decr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- 10%"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+            <TextView
+                android:id="@+id/textView_titulo_peso"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Peso"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_incr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+ 10%"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintTop_toBottomOf="@+id/progress_bar" />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/textView_titulo_peso"
+                android:id="@+id/textView_peso"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="0 Kg"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="50dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="@id/cardView_resultado_peso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardView_resultado_peso" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_resultado_altura"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#cdf3fa"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView_titulo_altura"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="Peso"
+                android:gravity="center"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/textView_titulo_altura"
+                android:id="@+id/textView_altura"
+                android:layout_width="70dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="0 Kg"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

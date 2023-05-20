@@ -22,15 +22,52 @@
     <string name="peso_grau01">Obesidade Grau I</string>
     <string name="peso_grau02">Obesidade Grau II</string>
     <string name="peso_grau03">Obesidade Grau III</string>
-    <string name="titulo_resultado_imc">Ainda não sabe seu Índice de Massa Corporal (IMC)?</string>
+    <string name="titulo_resultado_imc">Ainda não sabe seu Índice de Massa Corporal (IMC)? Calcule seu IMC no botão abaixo.</string>
     <string name="text_info_resultado_imc">Faça o cálculo aqui mesmo e conheça mais sobre o seu corpo.</string>
+
+
+
+    <!-- Strings text info IMCFragment -->
 
     <string name="text_info_resultado_peso_abaixo">Você está abaixo do peso ideal. Isso pode ser apenas
         uma característica pessoal, mas também pode ser um sinal de desnutrição ou de algum problema de saúde.
-        Caso esteja perdendo peso sem motivo aparente, procure um médico.
+        Caso esteja perdendo peso sem motivo aparente, procure um médico ou nutricionista.
     </string>
+
+    <string name="text_info_resultado_peso_normal">Parabéns, você está com o peso normal.
+        Recomendamos que mantenha hábitos saudáveis em seu dia a dia.
+        Especialistas sugerem ingerir de 4 a 5 porções diárias de frutas, verduras e legumes, além da prática de exercícios físicos
+        - pelo menos 150 minutos semanais.
+    </string>
+
+    <string name="text_info_resultado_peso_sobrepeso">Atenção! Alguns quilos a mais já são suficientes
+        para que algumas pessoas desenvolvam doenças associadas,
+        como diabetes e hipertensão. É importante rever seus hábitos. Procure um médico ou nutricionista.
+    </string>
+
+    <string name="text_info_resultado_peso_obesidade01">Sinal de alerta! O excesso de peso é fator de risco para desenvolvimento de outros
+        problemas de saúde.A boa notícia é que uma pequena perda de peso já traz benefícios à saúde.
+        Procure um médico ou nutricionista para definir o tratamento mais adequado para você.
+    </string>
+
+    <string name="text_info_resultado_peso_obesidade02">Sinal vermelho! Ao atingir este nível de IMC,
+        o risco de doenças associadas está entre alto e muito alto. Busque ajuda de um profissional de saúde; não perca tempo.
+    </string>
+
+    <string name="text_info_resultado_peso_obesidade03">Sinal vermelho! Ao atingir este nível de IMC,
+        o risco de doenças associadas é muito alto. Busque ajuda de um profissional de saúde; não perca tempo.
+    </string>
+
+
+
+
     <string name="calculadora_de_imc">Calculadora de IMC</string>
     <string name="text_resultado">Resultado</string>
+    <string name="text_info_pessoas_adultas_imc">* Cálculos válidos apenas para pessoas adultas.</string>
+    <string name="text_0kg">0 Kg</string>
+    <string name="text_peso">Peso</string>
+    <string name="text_altura">Altura</string>
+    <string name="text_0cm">0 Cm</string>
 
 
 </resources>
