@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentCalculateImcBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class CalculateImcFragment : Fragment() {
@@ -42,7 +46,8 @@ class CalculateImcFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.textMostrarResultado.setOnClickListener {
+        binding.progressButton.setOnClickListener {
+            binding.progressButton.setLoading()
             if (isValid()) {
                 val altura = binding.editTextAltura.text
                 val peso = binding.editTextPeso.text
@@ -50,11 +55,17 @@ class CalculateImcFragment : Fragment() {
                     altura.toString(),
                     peso.toString()
                 )
-                findNavController().navigate(action)
-                bottomNavigationView.visibility = View.VISIBLE
+                lifecycleScope.launch {
+                    delay(3_000)
+                    findNavController().navigate(action)
+                    bottomNavigationView.visibility = View.VISIBLE
+                    binding.progressButton.setNormal()
+                }
+
             } else {
                 Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT)
                     .show()
+                binding.progressButton.setNormal()
             }
         }
 
@@ -66,6 +77,7 @@ class CalculateImcFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         bottomNavigationView.visibility = View.VISIBLE
+        binding.progressButton.setNormal()
     }
 
     private fun isValid(): Boolean {

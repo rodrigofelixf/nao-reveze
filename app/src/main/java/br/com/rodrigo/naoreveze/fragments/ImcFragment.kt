@@ -36,9 +36,7 @@ class ImcFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.floatButtonIMC.setOnClickListener {
-            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
-        }
+
 
 
     }
@@ -47,6 +45,7 @@ class ImcFragment : Fragment() {
         super.onResume()
 
         initResultadoImc()
+        openScreenImcCalculate()
 
 
     }
@@ -87,7 +86,7 @@ class ImcFragment : Fragment() {
                 else -> getString(R.string.text_info_resultado_peso_obesidade03)
             }
 
-            // bottomSheet
+            // adiciona as regras ao bottom sheet e informacoes do IMC resultados
             binding.imageViewInfo.setOnClickListener {
                 val bottomSheetDialog = BottomSheetDialog(requireContext())
                 bottomSheetDialog.setContentView(R.layout.bottom_sheet_info_imc)
@@ -109,6 +108,18 @@ class ImcFragment : Fragment() {
                 binding.textViewTituloResultadoImc.text = tituloResultado
             }
 
+        }
+    }
+
+    private fun openScreenImcCalculate() {
+        binding.floatButtonIMC.setOnClickListener {
+            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
+        }
+        binding.cardViewResultadoPeso.setOnClickListener {
+            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
+        }
+        binding.cardViewResultadoAltura.setOnClickListener {
+            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
         }
     }
 
