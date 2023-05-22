@@ -12,7 +12,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="start"
-        app:tint="@color/red"
+        app:tint="@color/design_default_color_error"
         android:src="@drawable/icon_circle" />
 
     <TextView

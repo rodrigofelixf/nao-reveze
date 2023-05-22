@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".fragments.CalculateImcFragment">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background1" />
+
 
 
     <ImageButton
@@ -14,6 +24,7 @@
         android:layout_height="48dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
+        app:tint="@color/md_theme_light_onSurfaceVariant"
         android:background="#00FFFFFF"
         android:foreground="?attr/selectableItemBackground"
         android:src="@drawable/ic_back"
@@ -27,6 +38,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="15dp"
+        android:textColor="@color/md_theme_light_onSurfaceVariant"
         android:text="@string/calculadora_de_imc"
         android:textSize="16sp"
         android:textStyle="bold"
