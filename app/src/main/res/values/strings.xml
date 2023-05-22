@@ -19,7 +19,7 @@
 
     <string name="peso_abaixo">De acordo com a Organização Mundial da Saúde, seu IMC está ABAIXO DO PESO recomendado para a sua altura.</string>
     <string name="peso_normal">De acordo com a Organização Mundial da Saúde, seu IMC é considerado NORMAL para a sua altura.</string>
-    <string name="peso_sobrepeso">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de SOBREPESO em referência a sua altura.</string>
+    <string name="peso_sobrepeso">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de SOBREPESO.</string>
     <string name="peso_grau01">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU I.</string>
     <string name="peso_grau02">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU II.</string>
     <string name="peso_grau03">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU III.</string>
@@ -70,6 +70,7 @@
     <string name="text_altura">Altura</string>
     <string name="text_0cm">0 Cm</string>
     <string name="progressButton_calcular">Calcular</string>
+    <string name="text_mais_de_40">40.0+</string>
 
 
 

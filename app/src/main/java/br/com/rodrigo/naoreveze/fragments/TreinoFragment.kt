@@ -8,18 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
+
 import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
-import br.com.rodrigo.naoreveze.databinding.FragmentImcBinding
+
 
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
 import br.com.rodrigo.naoreveze.model.MusculoModel
-import br.com.rodrigo.naoreveze.viewmodel.ImcViewModel
+
 import java.text.Normalizer
 import java.util.Locale
 import kotlin.collections.ArrayList

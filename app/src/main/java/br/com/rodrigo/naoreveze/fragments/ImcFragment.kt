@@ -63,9 +63,17 @@ class ImcFragment : Fragment() {
 
         viewModel.resultado.observe(this) { resultado ->
             updateProgressBar()
-            binding.textViewResultadoImc.text = "%.1f".format(resultado)
+            if (resultado <= 39.9) {
+                binding.textViewResultadoImc.text = "%.1f".format(resultado)
+            } else {
+                binding.textViewResultadoImc.text = getString(R.string.text_mais_de_40)
+            }
+
+
             binding.textViewPeso.text = "${args.peso} Kg"
             binding.textViewAltura.text = "${args.altura} Cm"
+
+
 
             val tituloResultado = when {
                 resultado < 18.5 -> getString(R.string.peso_abaixo)
@@ -76,7 +84,7 @@ class ImcFragment : Fragment() {
                 else -> getString(R.string.peso_grau03)
             }
 
-            //  Regras do bottomsheet informacoes
+            //  Regras do bottomsheet - manda informacoes para o bottomSheet
             val infoTextoBottomSheet = when {
                 resultado < 18.5 -> getString(R.string.text_info_resultado_peso_abaixo)
                 resultado < 25 -> getString(R.string.text_info_resultado_peso_normal)
@@ -86,41 +94,58 @@ class ImcFragment : Fragment() {
                 else -> getString(R.string.text_info_resultado_peso_obesidade03)
             }
 
-            // adiciona as regras ao bottom sheet e informacoes do IMC resultados
-            binding.imageViewInfo.setOnClickListener {
-                val bottomSheetDialog = BottomSheetDialog(requireContext())
-                bottomSheetDialog.setContentView(R.layout.bottom_sheet_info_imc)
-                val textViewResultado = bottomSheetDialog.findViewById<TextView>(R.id.textView_imc_info)
-                textViewResultado!!.text = infoTextoBottomSheet
-                bottomSheetDialog.show()
+
+            //  Regras do background - coloca um background na tabela do resultado do imc
+            when {
+                resultado < 18.5 -> binding.tableResultAbaixoPeso.setBackgroundResource(R.drawable.background_table)
+                resultado < 25 -> binding.tableResultNormal.setBackgroundResource(R.drawable.background_table)
+                resultado < 30 -> binding.tableResultSobrepesoPeso.setBackgroundResource(R.drawable.background_table)
+                resultado < 35 -> binding.tableResultObesidade1Peso.setBackgroundResource(R.drawable.background_table)
+                resultado < 40 -> binding.tableResultObesidade2Peso.setBackgroundResource(R.drawable.background_table)
+                resultado > 39.9 -> binding.tableResultObesidade3Peso.setBackgroundResource(R.drawable.background_table)
             }
 
-            // validao de usuario que nao fez o calculo ainda
+
+            // captura o resultado da variavel da regra do bottomsheet e coloca no evento de click do incone INFO
+            binding.imageViewInfo.setOnClickListener {
+                    BottomSheetDialog(requireContext()).apply {
+                    setContentView(R.layout.bottom_sheet_info_imc)
+                    findViewById<TextView>(R.id.textView_imc_info)?.text = infoTextoBottomSheet
+                    show()
+                }
+            }
+
+            // validao de usuario que nao fez o calculo ainda - deixa os icones invisivel quando possivel
             if (resultado.isNaN()) {
-                binding.imageViewInfo.visibility = View.GONE
-                binding.progressBar.visibility = View.GONE
-                binding.textViewResultadoImc.visibility = View.GONE
-                binding.textViewTituloResultadoImc.text = getString(R.string.titulo_resultado_imc)
+                hideResultViews()
             } else {
-                binding.imageViewInfo.visibility = View.VISIBLE
-                binding.progressBar.visibility = View.VISIBLE
-                binding.textViewResultadoImc.visibility = View.VISIBLE
-                binding.textViewTituloResultadoImc.text = tituloResultado
+                showResultViews(tituloResultado)
             }
 
         }
     }
 
     private fun openScreenImcCalculate() {
-        binding.floatButtonIMC.setOnClickListener {
-            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
-        }
         binding.cardViewResultadoPeso.setOnClickListener {
             findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
         }
         binding.cardViewResultadoAltura.setOnClickListener {
             findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
         }
+    }
+
+    private fun hideResultViews() {
+        binding.imageViewInfo.visibility = View.GONE
+        binding.progressBar.visibility = View.GONE
+        binding.textViewResultadoImc.visibility = View.GONE
+        binding.textViewTituloResultadoImc.text = getString(R.string.titulo_resultado_imc)
+    }
+
+    private fun showResultViews(tituloResultado: String) {
+        binding.imageViewInfo.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.textViewResultadoImc.visibility = View.VISIBLE
+        binding.textViewTituloResultadoImc.text = tituloResultado
     }
 
 

@@ -1,306 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/floatButtonIMC"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_inferior_redondo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.card.MaterialCardView
+
+            android:id="@+id/cardView_Home_perfil"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/imageView_perfil_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/imagem_perfil2" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <TextView
+            android:id="@+id/textView_saudacoes_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:text="@string/text_calcular_imc"
-            app:icon="@drawable/inc_imc" />
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_marginTop="10dp"
+            android:text="Olá, Rodrigo!"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_Home_perfil" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/background_inferior_redondo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/CircularDeterminateProgressBar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:max="100"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout"
+            tools:progress="60" />
 
+        <TextView
+            android:id="@+id/textView_resultado_imc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+            app:layout_constraintStart_toStartOf="@+id/progress_bar"
+            app:layout_constraintTop_toTopOf="@+id/progress_bar"
+            tools:text="60%" />
 
-    <com.google.android.material.card.MaterialCardView
-
-        android:id="@+id/cardView_Home_perfil"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="15dp"
-        app:cardCornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        <TextView
+            android:id="@+id/textView_titulo_resultado_imc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/titulo_resultado_imc"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progress_bar" />
 
         <ImageView
-            android:id="@+id/imageView_perfil_home"
+            android:id="@+id/imageView_info"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/icon_info"
+            app:tint="#FFA500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_titulo_resultado_imc" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_resultado_peso"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#cdf3fa"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_info">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_titulo_peso"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_peso"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_peso"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_0kg"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_titulo_peso" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:layout_marginVertical="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="@id/cardView_resultado_peso"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cardView_resultado_peso" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView_resultado_altura"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardBackgroundColor="#cdf3fa"
+            app:cardCornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_info">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView_titulo_altura"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_altura"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView_altura"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="@string/text_0cm"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textView_titulo_altura" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_abaixo_peso"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/imagem_perfil2" />
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="15dp"
+            app:circle_color="#5EA7E1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardView_resultado_peso"
+            app:result_text="Abaixo do peso"
+            app:table_text_number="17.0-18.4" />
 
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <TextView
-        android:id="@+id/textView_saudacoes_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Olá, Rodrigo!"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView_Home_perfil" />
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="@style/CircularDeterminateProgressBar"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:max="100"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/frameLayout"
-        tools:progress="60" />
-
-    <TextView
-        android:id="@+id/textView_resultado_imc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
-        tools:text="60%" />
-
-    <TextView
-        android:id="@+id/textView_titulo_resultado_imc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="@string/titulo_resultado_imc"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progress_bar" />
-
-    <ImageView
-        android:id="@+id/imageView_info"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/icon_info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_titulo_resultado_imc"
-        app:tint="@color/dark_blue" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_resultado_peso"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:foreground="?attr/selectableItemBackground"
-        app:cardBackgroundColor="#cdf3fa"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView_info">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_normal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:circle_color="#42F149"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_result_abaixo_peso"
+            app:result_text="Normal"
+            app:table_text_number="18.5-24.9" />
 
-            <TextView
-                android:id="@+id/textView_titulo_peso"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="@string/text_peso"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView_peso"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="@string/text_0kg"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_titulo_peso" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <View
-        android:layout_width="1dp"
-        android:layout_height="50dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@id/cardView_resultado_peso"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cardView_resultado_peso" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_resultado_altura"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:foreground="?attr/selectableItemBackground"
-        app:cardBackgroundColor="#cdf3fa"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView_info">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_sobrepeso_peso"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:circle_color="#FFEB3B"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_result_normal"
+            app:result_text="Sobrepeso"
+            app:table_text_number="25.0-29.0" />
 
-            <TextView
-                android:id="@+id/textView_titulo_altura"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:text="@string/text_altura"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_obesidade1_peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:circle_color="#FF9800"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_result_sobrepeso_peso"
+            app:result_text="Obesidade Grau I"
+            app:table_text_number="30.0-34.9" />
 
-            <TextView
-                android:id="@+id/textView_altura"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:gravity="center"
-                android:text="@string/text_0cm"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView_titulo_altura" />
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_obesidade2_peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            app:circle_color="#FF5722"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_result_obesidade1_peso"
+            app:result_text="Obesidade Grau II"
+            app:table_text_number="35.0-39.9" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <br.com.rodrigo.naoreveze.components.TabelaImc
+            android:id="@+id/table_result_obesidade3_peso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginBottom="10dp"
+            app:circle_color="#FF2222"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/table_result_obesidade2_peso"
+            app:result_text="Obesidade Grau III"
+            app:table_text_number="> 39.9" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_abaixo_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#5EA7E1"
-        app:result_text="Abaixo do peso"
-        app:table_text_number="17.0-18.4"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView_resultado_peso" />
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_normal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#42F149"
-        app:result_text="Normal"
-        app:table_text_number="18.5-24.9"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_result_abaixo_peso" />
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_sobrepeso_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#FFEB3B"
-        app:result_text="Sobrepeso"
-        app:table_text_number="25.0-29.0"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_result_normal" />
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_obesidade1_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#FF9800"
-        app:result_text="Obesidade Grau I"
-        app:table_text_number="30.0-34.9"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_result_sobrepeso_peso" />
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_obesidade2_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#FF5722"
-        app:result_text="Obesidade Grau II"
-        app:table_text_number="35.0-39.9"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_result_obesidade1_peso" />
-
-    <br.com.rodrigo.naoreveze.components.TabelaImc
-        android:id="@+id/table_result_obesidade3_peso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:circle_color="#FF2222"
-        app:result_text="Obesidade Grau III"
-        app:table_text_number="> 39.9"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_result_obesidade2_peso" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
 
 
 
