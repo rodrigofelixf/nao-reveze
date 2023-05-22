@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import br.com.rodrigo.naoreveze.R
-import br.com.rodrigo.naoreveze.databinding.ProgressButtonBinding
+import br.com.rodrigo.naoreveze.databinding.ResProgressButtonBinding
 
 class ProgressButton @JvmOverloads constructor(
     context: Context,
@@ -18,7 +18,7 @@ class ProgressButton @JvmOverloads constructor(
     private var loadingTitle: String? = null
 
 
-    private val binding = ProgressButtonBinding
+    private val binding = ResProgressButtonBinding
         .inflate(LayoutInflater.from(context), this, true)
 
     private var state: ProgressButtonState = ProgressButtonState.Normal

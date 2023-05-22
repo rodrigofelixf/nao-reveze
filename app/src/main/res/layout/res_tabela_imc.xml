@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/result_circle"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="start"
+        app:tint="@color/red"
+        android:src="@drawable/icon_circle" />
+
+    <TextView
+        android:layout_marginStart="5dp"
+        android:id="@+id/result_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Severely underweight"
+        android:textSize="18sp" />
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/table_text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="16.0-16.9"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

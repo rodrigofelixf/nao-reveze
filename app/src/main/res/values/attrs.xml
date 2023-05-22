@@ -3,6 +3,11 @@
     <declare-styleable name="ProgressButton">
         <attr name="progress_button_title" format="string" />
         <attr name="progress_button_loading_title" format="string" />
+    </declare-styleable>
 
+    <declare-styleable name="TabelaImc">
+        <attr name="circle_color" format="color" />
+        <attr name="result_text" format="string" />
+        <attr name="table_text_number" format="string" />
     </declare-styleable>
 </resources>
