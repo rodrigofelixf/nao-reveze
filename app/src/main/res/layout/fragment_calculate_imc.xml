@@ -50,7 +50,7 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="280dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="8dp"
@@ -88,31 +88,44 @@
             android:layout_marginTop="120dp"
             android:hint="@string/text_peso_kg"
             app:counterEnabled="true"
-            app:counterMaxLength="3"
+            app:counterMaxLength="4"
             app:startIconDrawable="@drawable/inc_imc">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editText_peso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxEms="3"
-                android:maxLength="3"
+                android:inputType="numberDecimal"
+                android:maxEms="4"
+                android:maxLength="4"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            app:icon="@drawable/inc_imc"
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            app:iconGravity="textEnd"
-            android:text="@string/progressButton_calcular"
-            android:id="@+id/button_calcular_imc"
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginHorizontal="16dp"
+        <FrameLayout
             android:layout_marginBottom="30dp"
-            android:layout_height="wrap_content" />
+            android:id="@+id/frame_layout_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginHorizontal="16dp">
+
+            <Button
+                android:id="@+id/button_calcular_imc"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/progressButton_calcular"
+                app:icon="@drawable/inc_imc"
+                app:iconGravity="textEnd" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+        </FrameLayout>
 
     </androidx.cardview.widget.CardView>
 

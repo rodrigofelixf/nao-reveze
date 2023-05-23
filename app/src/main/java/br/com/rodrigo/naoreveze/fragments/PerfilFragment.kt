@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentHomeBinding
@@ -20,6 +22,8 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class PerfilFragment : Fragment() {
     private val binding: FragmentPerfilBinding by lazy {
@@ -36,6 +40,25 @@ class PerfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonCalcularImc.setOnClickListener {
+            // Mostrar o texto "Calculando"
+            binding.buttonCalcularImc.text = getString(R.string.text_calculando)
+            // Mostrar a animação de carregamento
+            binding.progressBarButton.visibility = View.VISIBLE
+
+            // Desabilitar o botão para evitar cliques repetidos
+            binding.buttonCalcularImc.isEnabled = false
+
+            // Simular um processo de carregamento
+            lifecycleScope.launch {
+                delay(3_000)
+                binding.progressBarButton.visibility = View.INVISIBLE
+                binding.buttonCalcularImc.text = getString(R.string.text_calcular)
+                binding.buttonCalcularImc.isEnabled = true
+
+            }
+        }
 
 
     }

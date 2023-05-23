@@ -1,16 +1,22 @@
 package br.com.rodrigo.naoreveze.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentCalculateImcBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class CalculateImcFragment : Fragment() {
@@ -40,7 +46,8 @@ class CalculateImcFragment : Fragment() {
 
 
         binding.iconBack.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_calculateImcFragment_to_imcFragment)
+            bottomNavigationView.visibility = View.VISIBLE
         }
 
         binding.buttonCalcularImc.setOnClickListener {
@@ -51,8 +58,7 @@ class CalculateImcFragment : Fragment() {
                     altura.toString(),
                     peso.toString()
                 )
-                findNavController().navigate(action)
-                bottomNavigationView.visibility = View.VISIBLE
+                navigateCalculateAnimation(action)
             } else {
                 Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT)
                     .show()
@@ -64,7 +70,6 @@ class CalculateImcFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        bottomNavigationView.visibility = View.VISIBLE
     }
 
     private fun isValid(): Boolean {
@@ -74,6 +79,42 @@ class CalculateImcFragment : Fragment() {
         return (
                 altura != null && peso != null && altura != 0.0 && peso != 0.0)
     }
+
+    private fun showSplashScreen(action: NavDirections) {
+
+
+        // Exibir o splash screen
+        findNavController().navigate(R.id.action_calculateImcFragment_to_splashFragment)
+
+        // Aguardar um período de tempo e, em seguida, navegar para outra tela
+        lifecycleScope.launch {
+            delay(3_000)
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun navigateCalculateAnimation(action: NavDirections) {
+        // Mostrar o texto "Calculando"
+        binding.buttonCalcularImc.text = getString(R.string.text_calculando)
+        // Mostrar a animação de carregamento
+        binding.progressBarButton.visibility = View.VISIBLE
+
+        // Desabilitar o botão para evitar cliques repetidos
+        binding.buttonCalcularImc.isEnabled = false
+
+
+        // Simular um processo de carregamento
+        lifecycleScope.launch {
+            delay(3_000)
+            binding.progressBarButton.visibility = View.INVISIBLE
+            binding.buttonCalcularImc.text = getString(R.string.text_calcular)
+            binding.buttonCalcularImc.isEnabled = true
+            bottomNavigationView.visibility = View.VISIBLE
+            findNavController().navigate(action)
+        }
+    }
+
+
 
 
 }

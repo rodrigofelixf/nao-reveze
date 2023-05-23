@@ -8,7 +8,7 @@
     <string name="nenhum_resultado_encontrado">Nenhum resultado encontrado.</string>
     <string name="text_altura_cm">Altura (cm)</string>
     <string name="text_cm">cm</string>
-    <string name="text_peso_kg">Peso (kg)</string>
+    <string name="text_peso_kg">Peso (ex.: 63.2)</string>
     <string name="text_kg">kg</string>
     <string name="text_calcular">Calcular</string>
     <string name="text_calculando">Calculando…</string>

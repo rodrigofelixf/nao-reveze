@@ -63,7 +63,19 @@
         <action
             android:id="@+id/action_calculateImcFragment_to_imcFragment"
             app:destination="@id/imcFragment"
+            app:popUpTo="@id/imcFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_calculateImcFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="br.com.rodrigo.naoreveze.fragments.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_imcFragment"
+            app:destination="@id/imcFragment" />
     </fragment>
 </navigation>
