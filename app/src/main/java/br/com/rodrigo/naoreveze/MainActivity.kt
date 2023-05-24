@@ -1,5 +1,7 @@
 package br.com.rodrigo.naoreveze
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.bottomNavigation.itemActiveIndicatorColor = ColorStateList.valueOf(getColor(R.color.md_theme_dark_surfaceVariant)
+        )
 
         initBottomNavigation()
 
