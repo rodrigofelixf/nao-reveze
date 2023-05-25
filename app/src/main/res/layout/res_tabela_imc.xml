@@ -16,6 +16,7 @@
         android:src="@drawable/icon_circle" />
 
     <TextView
+        android:textColor="@color/md_theme_light_outlineVariant"
         android:layout_marginStart="5dp"
         android:id="@+id/result_text"
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_weight="1" />
 
     <TextView
+        android:textColor="@color/md_theme_light_outlineVariant"
         android:id="@+id/table_text_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

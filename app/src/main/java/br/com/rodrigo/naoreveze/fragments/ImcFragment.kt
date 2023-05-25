@@ -108,7 +108,7 @@ class ImcFragment : Fragment() {
 
             // captura o resultado da variavel da regra do bottomsheet e coloca no evento de click do incone INFO
             binding.imageViewInfo.setOnClickListener {
-                    BottomSheetDialog(requireContext()).apply {
+                BottomSheetDialog(requireContext()).apply {
                     setContentView(R.layout.bottom_sheet_info_imc)
                     findViewById<TextView>(R.id.textView_imc_info)?.text = infoTextoBottomSheet
                     show()
@@ -132,20 +132,23 @@ class ImcFragment : Fragment() {
         binding.cardViewResultadoAltura.setOnClickListener {
             findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
         }
+        binding.buttonTelaCalcular.setOnClickListener {
+            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
+        }
     }
 
     private fun hideResultViews() {
         binding.imageViewInfo.visibility = View.GONE
         binding.progressBar.visibility = View.GONE
         binding.textViewResultadoImc.visibility = View.GONE
-        binding.textViewTituloResultadoImc.text = getString(R.string.titulo_resultado_imc)
+        binding.textViewTituloTesultadoImc.text = getString(R.string.titulo_resultado_imc)
     }
 
     private fun showResultViews(tituloResultado: String) {
         binding.imageViewInfo.visibility = View.VISIBLE
         binding.progressBar.visibility = View.VISIBLE
         binding.textViewResultadoImc.visibility = View.VISIBLE
-        binding.textViewTituloResultadoImc.text = tituloResultado
+        binding.textViewTituloTesultadoImc.text = tituloResultado
     }
 
 

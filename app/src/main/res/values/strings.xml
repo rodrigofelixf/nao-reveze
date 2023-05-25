@@ -17,13 +17,13 @@
 
     <!-- Strings codigo IMC Fragment -->
 
-    <string name="peso_abaixo">De acordo com a Organização Mundial da Saúde, seu IMC está ABAIXO DO PESO recomendado para a sua altura.</string>
-    <string name="peso_normal">De acordo com a Organização Mundial da Saúde, seu IMC é considerado NORMAL para a sua altura.</string>
-    <string name="peso_sobrepeso">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de SOBREPESO.</string>
-    <string name="peso_grau01">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU I.</string>
-    <string name="peso_grau02">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU II.</string>
-    <string name="peso_grau03">De acordo com a Organização Mundial da Saúde, seu IMC está no nivel de OBESIDADE GRAU III.</string>
-    <string name="titulo_resultado_imc">Ainda não sabe seu Índice de Massa Corporal (IMC)? Calcule seu IMC no botão abaixo.</string>
+    <string name="peso_abaixo">Abaixo do Peso</string>
+    <string name="peso_normal">Normal</string>
+    <string name="peso_sobrepeso">Sobrepeso</string>
+    <string name="peso_grau01">Obesidade Grau I</string>
+    <string name="peso_grau02">Obesidade Grau II</string>
+    <string name="peso_grau03">Obesidade Grau III</string>
+    <string name="titulo_resultado_imc">Calcule seu IMC</string>
     <string name="text_info_resultado_imc">Faça o cálculo aqui mesmo e conheça mais sobre o seu corpo.</string>
 
 

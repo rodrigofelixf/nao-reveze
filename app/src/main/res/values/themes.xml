@@ -57,6 +57,23 @@
         <item name="android:progressDrawable">@drawable/circle_progress_bar</item>
     </style>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Define a cor do hint -->
+        <item name="android:textColorHint">@color/md_theme_light_outlineVariant</item> <!-- Substitua #FF0000 pela cor desejada -->
+        <item name="android:editTextColor">@color/app_color_white</item>
+        <item name="tint">@color/app_color_white</item>
+        <item name="android:background">@color/md_theme_light_onSurfaceVariant</item>
+
+
+
+
+
+        <!-- Outras personalizações opcionais -->
+        <!-- <item name="android:textSize">16sp</item> -->
+        <!-- <item name="android:textStyle">italic</item> -->
+        <!-- <item name="android:background">@drawable/custom_searchview_background</item> -->
+    </style>
+
 
 
 

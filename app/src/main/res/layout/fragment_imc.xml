@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_app">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,36 +12,82 @@
         android:layout_height="match_parent">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="255dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/top_background" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                android:background="@color/app_color_white"
+                android:orientation="vertical">
+
+                <!-- Media -->
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="194dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/background_imc" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/button_tela_calcular"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/seed"
+                        android:text="Calcular"
+                        android:textColor="@color/app_color_white"
+                        app:icon="@drawable/inc_imc"
+                        app:iconTint="@color/app_color_white" />
+
+                    <TextView
+                        android:id="@+id/textView_titulo_tesultado_imc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/seed"
+                        android:textSize="20sp"
+                        android:textStyle="italic"
+                        tools:text="Sobrepeso" />
+
+                    <ImageButton
+                        android:id="@+id/imageView_info"
+                        android:layout_width="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="10dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:textColor="@color/seed"
+                        android:src="@drawable/icon_info"
+                        app:tint="@color/md_theme_light_error" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-
             android:id="@+id/cardView_Home_perfil"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="40dp"
             app:cardCornerRadius="50dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
@@ -53,81 +100,58 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
         <TextView
             android:id="@+id/textView_saudacoes_nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Olá, Rodrigo!"
-            android:textSize="12sp"
-            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textColor="@color/app_color_white"
+            android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView_Home_perfil" />
+            app:layout_constraintEnd_toEndOf="@id/cardView_Home_perfil"
+            app:layout_constraintStart_toStartOf="@id/cardView_Home_perfil"
+            app:layout_constraintTop_toBottomOf="@id/cardView_Home_perfil"
+            app:layout_goneMarginTop="70dp" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
             style="@style/CircularDeterminateProgressBar"
             android:layout_width="150dp"
             android:layout_height="150dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:max="100"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_saudacoes_nome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:progress="60" />
 
         <TextView
+            android:padding="10dp"
             android:id="@+id/textView_resultado_imc"
             android:layout_width="wrap_content"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:textColor="@color/md_theme_light_onSurfaceVariant"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/app_color_white"
             app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
             app:layout_constraintEnd_toEndOf="@+id/progress_bar"
             app:layout_constraintStart_toStartOf="@+id/progress_bar"
             app:layout_constraintTop_toTopOf="@+id/progress_bar"
             tools:text="60%" />
 
-        <TextView
-            android:id="@+id/textView_titulo_resultado_imc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center_horizontal"
-            android:text="@string/titulo_resultado_imc"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameLayout" />
 
-        <Button
-            android:text="Info"
-            style="?attr/materialButtonOutlinedStyle"
-            android:id="@+id/imageView_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            app:icon="@drawable/icon_info"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView_titulo_resultado_imc" />
-
-        <com.google.android.material.card.MaterialCardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView_resultado_peso"
-            style="@style/Widget.Material3.CardView.Filled"
             android:layout_width="150dp"
             android:layout_height="70dp"
-            android:layout_marginStart="16dp"
-            app:cardElevation="8dp"
             android:layout_marginTop="10dp"
             android:foreground="?attr/selectableItemBackground"
-
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView_info">
+            app:cardBackgroundColor="@color/app_color_white"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="@id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -140,6 +164,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/text_peso"
+                    android:textColor="@color/background_app"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -152,6 +177,7 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="@string/text_0kg"
+                    android:textColor="@color/background_app"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -162,29 +188,31 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="1dp"
             android:layout_height="50dp"
             android:layout_marginVertical="10dp"
             android:layout_marginTop="10dp"
+            android:background="@color/app_color_white"
             app:layout_constraintBottom_toBottomOf="@id/cardView_resultado_peso"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/cardView_resultado_peso" />
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.Material3.CardView.Filled"
+        <androidx.cardview.widget.CardView
             android:id="@+id/cardView_resultado_altura"
             android:layout_width="150dp"
             android:layout_height="70dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            app:cardElevation="8dp"
+
             android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView_info">
+            app:cardBackgroundColor="@color/app_color_white"
+            app:cardElevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@id/frameLayout"
+            app:layout_constraintTop_toBottomOf="@id/frameLayout">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -197,6 +225,7 @@
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/text_altura"
+                    android:textColor="@color/background_app"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -209,6 +238,7 @@
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
                     android:text="@string/text_0cm"
+                    android:textColor="@color/background_app"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -219,7 +249,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.cardview.widget.CardView>
 
         <br.com.rodrigo.naoreveze.components.TabelaImc
             android:id="@+id/table_result_abaixo_peso"

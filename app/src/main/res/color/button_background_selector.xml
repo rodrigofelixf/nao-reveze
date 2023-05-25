@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/seed" android:state_enabled="true" /> <!-- Cor padrão quando habilitado -->
+    <item android:color="@color/md_theme_light_onSurfaceVariant" android:state_enabled="false" /> <!-- Cor quando desabilitado -->
+</selector>

@@ -51,6 +51,8 @@ class TreinoFragment : Fragment() {
 
 
 
+
+
         initRecyclerView()
         clickRecyclerView()
         animacaoRightToLeft(binding.recyclerViewMusculos)
@@ -74,7 +76,8 @@ class TreinoFragment : Fragment() {
     }
 
     private fun searchView() {
-        binding.searchViewTreino.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        binding.searchViewTreino.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
