@@ -70,6 +70,7 @@ class CalculateImcFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        bottomNavigationView.visibility = View.VISIBLE
     }
 
     private fun isValid(): Boolean {
