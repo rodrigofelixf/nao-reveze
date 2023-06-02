@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments
+package br.com.rodrigo.naoreveze.ui.fragments
 
 
 import android.os.Bundle
@@ -13,7 +13,7 @@ import androidx.navigation.fragment.navArgs
 import br.com.rodrigo.naoreveze.R
 
 import br.com.rodrigo.naoreveze.databinding.FragmentImcBinding
-import br.com.rodrigo.naoreveze.viewmodel.ImcViewModel
+import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -21,7 +21,7 @@ class ImcFragment : Fragment() {
     private val binding: FragmentImcBinding by lazy {
         FragmentImcBinding.inflate(layoutInflater)
     }
-    private val viewModel by lazy { ViewModelProvider(this).get(ImcViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) }
 
     private val args: ImcFragmentArgs by navArgs()
 

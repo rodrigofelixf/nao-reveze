@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.HomeFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.HomeFragment"
         android:label="HomeFragment">
     </fragment>
     <fragment
         android:id="@+id/treinoFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.TreinoFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.TreinoFragment"
         android:label="TreinoFragment" >
         <action
             android:id="@+id/action_treinoFragment_to_peitoralFragment"
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/peitoralFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.musculos.PeitoralFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.musculos.PeitoralFragment"
         android:label="fragment_peitoral"
         tools:layout="@layout/fragment_peitoral" >
         <action
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.PerfilFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/imcFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.ImcFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.ImcFragment"
         android:label="fragment_imc"
         tools:layout="@layout/fragment_imc" >
         <action
@@ -57,7 +57,7 @@
     </fragment>
     <fragment
         android:id="@+id/calculateImcFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.CalculateImcFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.CalculateImcFragment"
         android:label="fragment_calculate_imc"
         tools:layout="@layout/fragment_calculate_imc" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
-        android:name="br.com.rodrigo.naoreveze.fragments.SplashFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.SplashFragment"
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_imcFragment"

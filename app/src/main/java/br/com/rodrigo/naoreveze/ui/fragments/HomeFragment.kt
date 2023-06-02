@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments
+package br.com.rodrigo.naoreveze.ui.fragments
 
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar

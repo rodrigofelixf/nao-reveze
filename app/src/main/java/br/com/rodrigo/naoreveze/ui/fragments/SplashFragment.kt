@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments
+package br.com.rodrigo.naoreveze.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

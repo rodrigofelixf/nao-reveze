@@ -1,6 +1,4 @@
-package br.com.rodrigo.naoreveze.model
-
-import androidx.lifecycle.MutableLiveData
+package br.com.rodrigo.naoreveze.database.models
 
 class ImcModel(val peso: Double, val altura: Double) {
 

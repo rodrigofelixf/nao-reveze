@@ -1,10 +1,10 @@
-package br.com.rodrigo.naoreveze.viewmodel
+package br.com.rodrigo.naoreveze.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import br.com.rodrigo.naoreveze.model.ImcModel
+import br.com.rodrigo.naoreveze.database.models.ImcModel
 
-class ImcViewModel : ViewModel() {
+class UserViewModel : ViewModel() {
 
     var peso: MutableLiveData<Double> = MutableLiveData()
     var altura: MutableLiveData<Double> = MutableLiveData()

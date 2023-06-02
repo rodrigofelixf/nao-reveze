@@ -1,24 +1,15 @@
-package br.com.rodrigo.naoreveze
+package br.com.rodrigo.naoreveze.ui
 
 import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import br.com.rodrigo.naoreveze.databinding.ActivityMainBinding
-import android.view.animation.AnimationUtils
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupWithNavController
-import br.com.rodrigo.naoreveze.databinding.FragmentPeitoralBinding
-import br.com.rodrigo.naoreveze.fragments.HomeFragment
-import br.com.rodrigo.naoreveze.fragments.TreinoFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import br.com.rodrigo.naoreveze.R
 
 class MainActivity : AppCompatActivity() {
 

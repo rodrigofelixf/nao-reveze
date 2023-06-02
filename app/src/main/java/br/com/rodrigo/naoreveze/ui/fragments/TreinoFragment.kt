@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments
+package br.com.rodrigo.naoreveze.ui.fragments
 
 
 import android.os.Bundle
@@ -13,12 +13,12 @@ import androidx.navigation.fragment.findNavController
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.rodrigo.naoreveze.R
-import br.com.rodrigo.naoreveze.adapter.MusculosAdapter
+import br.com.rodrigo.naoreveze.ui.adapter.MusculosAdapter
 
 
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
-import br.com.rodrigo.naoreveze.model.MusculoModel
+import br.com.rodrigo.naoreveze.database.models.MusculoModel
 
 import java.text.Normalizer
 import java.util.Locale

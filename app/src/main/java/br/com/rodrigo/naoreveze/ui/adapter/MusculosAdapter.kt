@@ -1,9 +1,9 @@
-package br.com.rodrigo.naoreveze.adapter
+package br.com.rodrigo.naoreveze.ui.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
-import br.com.rodrigo.naoreveze.model.MusculoModel
+import br.com.rodrigo.naoreveze.database.models.MusculoModel
 
 class MusculosAdapter(
     private var listaMusculoModels: List<MusculoModel>,

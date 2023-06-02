@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.fragments.musculos
+package br.com.rodrigo.naoreveze.ui.fragments.musculos
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.model
+package br.com.rodrigo.naoreveze.database.models
 
 data class MusculoModel(
     val titulo: String,

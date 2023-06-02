@@ -27,7 +27,6 @@
     <string name="text_info_resultado_imc">Faça o cálculo aqui mesmo e conheça mais sobre o seu corpo.</string>
 
 
-
     <!-- Strings text info IMCFragment -->
 
     <string name="text_info_resultado_peso_abaixo">Você está abaixo do peso ideal. Isso pode ser apenas
@@ -60,8 +59,6 @@
     </string>
 
 
-
-
     <string name="calculadora_de_imc">Calculadora de IMC</string>
     <string name="text_resultado">Resultado</string>
     <string name="text_info_pessoas_adultas_imc">* Cálculos válidos apenas para pessoas adultas.</string>
@@ -71,7 +68,7 @@
     <string name="text_0cm">0 Cm</string>
     <string name="progressButton_calcular">Calcular</string>
     <string name="text_mais_de_40">40.0+</string>
-
+    <string name="text_first_name">Primeiro Nome</string>
 
 
 </resources>
