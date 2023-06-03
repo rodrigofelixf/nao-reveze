@@ -38,10 +38,6 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
     }
 
 
-
-
-
-
     fun calcularImc() {
         val model = ImcModel(peso.value!!, altura.value!!)
         resultado.value = model.calcularImc()

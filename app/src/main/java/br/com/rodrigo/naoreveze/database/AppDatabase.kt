@@ -4,15 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import br.com.rodrigo.naoreveze.database.dao.UserDao
 import br.com.rodrigo.naoreveze.database.models.User
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 @Database(entities = [User::class], version = 1)
 
-abstract class UserDatabase : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
 
@@ -21,9 +18,9 @@ abstract class UserDatabase : RoomDatabase() {
         private const val DATABASE_NAME: String = "nao-reveze-database"
 
         @Volatile
-        private var INSTANCE: UserDatabase? = null
+        private var INSTANCE: AppDatabase? = null
 
-        fun getInstance(context: Context): UserDatabase =
+        fun getInstance(context: Context): AppDatabase =
             INSTANCE ?: synchronized(this) {
                 INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
             }
@@ -31,7 +28,7 @@ abstract class UserDatabase : RoomDatabase() {
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(
                 context.applicationContext,
-                UserDatabase::class.java, DATABASE_NAME
+                AppDatabase::class.java, DATABASE_NAME
             ).build()
     }
 

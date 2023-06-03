@@ -41,18 +41,10 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+        userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
+            val saudacoes = "Olá, ${usuario?.nome}"
+            binding.textViewSaudacoesNome.text = saudacoes
 
-
-
-        userViewModel.loadUsers()
-
-        userViewModel.users.observe(viewLifecycleOwner) { users ->
-            // Atualize sua interface de usuário com os dados do usuário
-            val user = users.firstOrNull()
-            user?.let {
-                binding.textViewSaudacoesNome.text = it.nome
-
-            }
         }
 
 
@@ -68,15 +60,13 @@ class HomeFragment : Fragment() {
 
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
+
 
     private fun initDataAtual() {
         val calendar = Calendar.getInstance()
         val dateFormat = SimpleDateFormat("EEEE, dd 'de' MMMM", Locale.getDefault())
         val currentDate = dateFormat.format(calendar.time)
-        binding.textViewDataAtual.text = currentDate.toString()
+        binding.textViewDataAtual.text = currentDate
     }
 
 
