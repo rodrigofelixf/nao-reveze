@@ -12,7 +12,9 @@ import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentCalculateImcBinding
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
+
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

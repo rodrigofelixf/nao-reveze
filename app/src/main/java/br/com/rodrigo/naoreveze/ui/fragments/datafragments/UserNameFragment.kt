@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import br.com.rodrigo.naoreveze.R
-import br.com.rodrigo.naoreveze.databinding.FragmentHomeBinding
 import br.com.rodrigo.naoreveze.databinding.FragmentUserNameBinding
+
 
 class UserNameFragment : Fragment() {
     private val binding: FragmentUserNameBinding by lazy {
@@ -22,13 +21,14 @@ class UserNameFragment : Fragment() {
     ): View {
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.buttonProximo.setOnClickListener {
-            findNavController().navigate(R.id.action_userNameFragment_to_userHeightAndWeightFragment)
+            val nome = binding.editTextNome.text.toString()
+            val action =
+                UserNameFragmentDirections.actionUserNameFragmentToUserHeightAndWeightFragment(nome)
+            findNavController().navigate(action)
 
         }
 

@@ -7,8 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+
+import br.com.rodrigo.naoreveze.application.NaoRevezeApplication
+
 
 import br.com.rodrigo.naoreveze.databinding.FragmentHomeBinding
+import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
+import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModelFactory
 import java.util.Locale
 
 
@@ -17,6 +23,11 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding by lazy {
         FragmentHomeBinding.inflate(layoutInflater)
     }
+
+    private val userViewModel : UserViewModel by viewModels {
+        UserViewModelFactory((requireActivity().application as NaoRevezeApplication).repository)
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,6 +39,29 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+
+
+        userViewModel.loadUsers()
+
+        userViewModel.users.observe(viewLifecycleOwner) { users ->
+            // Atualize sua interface de usuário com os dados do usuário
+            val user = users.firstOrNull()
+            user?.let {
+                binding.textViewSaudacoesNome.text = it.nome
+
+            }
+        }
+
+
+
+
+
+
+
+
 
 
         initDataAtual()
