@@ -6,7 +6,7 @@
     <string name="text_o_que_esta_treinando">O que está treinando?</string>
     <string name="text_qual_exercicio_subistituir">Qual exercício você deseja substituir?</string>
     <string name="nenhum_resultado_encontrado">Nenhum resultado encontrado.</string>
-    <string name="text_altura_cm">Altura (cm)</string>
+    <string name="text_altura_cm">Altura (ex.: 170cm)</string>
     <string name="text_cm">cm</string>
     <string name="text_peso_kg">Peso (ex.: 63.2)</string>
     <string name="text_kg">kg</string>

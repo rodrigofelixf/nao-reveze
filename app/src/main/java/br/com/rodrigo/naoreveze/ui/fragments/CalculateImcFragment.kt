@@ -21,53 +21,72 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-
-
+/**
+ * Classe responsável por calcular o IMC do usuário e atualizar as informações no banco de dados.
+ * Também possui um botão de voltar que cancela a corrotina de cálculo.
+ */
 class CalculateImcFragment : Fragment() {
+
+    // Binding da classe CalculateImcFragment
     private val binding by lazy { FragmentCalculateImcBinding.inflate(layoutInflater) }
 
-    // captura a view do bottomnavigation
+    // Captura a view do BottomNavigationView
     private val bottomNavigationView by lazy {
-        requireActivity().findViewById<BottomNavigationView>(
-            R.id.bottom_navigation
-        )
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navigation)
     }
 
-    private val userViewModel : UserViewModel by viewModels {
+    // Instância do UserViewModel para gerenciar as operações relacionadas aos dados do usuário
+    private val userViewModel: UserViewModel by viewModels {
         UserViewModelFactory((requireActivity().application as NaoRevezeApplication).repository)
     }
 
+    /**
+     * Sobrescrito do Fragment. Chamado quando o layout do fragmento precisa ser inflado.
+     * Retorna a raiz do layout inflado.
+     */
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         return binding.root
-
     }
 
-
+    /**
+     * Sobrescrito do Fragment. Chamado após a criação da visualização do fragmento.
+     * Esconde o BottomNavigationView e inicializa o botão de voltar.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         bottomNavigationView.visibility = View.GONE
         initButtonBack()
-
-
     }
 
+    /**
+     * Sobrescrito do Fragment. Chamado quando o fragmento se torna visível ao usuário.
+     * Chama o método addNewUser() para adicionar um ouvinte de clique ao botão de cálculo.
+     */
     override fun onStart() {
         super.onStart()
 
         addNewUser()
     }
 
+    /**
+     * Sobrescrito do Fragment. Chamado quando a visualização do fragmento está prestes a ser destruída.
+     * Exibe o BottomNavigationView.
+     */
     override fun onDestroyView() {
         super.onDestroyView()
         bottomNavigationView.visibility = View.VISIBLE
     }
 
-
+    /**
+     * Navega para a próxima tela exibindo uma animação de carregamento.
+     * Desabilita o botão de cálculo durante o processo.
+     * O processo de carregamento é simulado usando uma corrotina com um atraso de 3 segundos.
+     * @param action A ação de navegação para a próxima tela.
+     */
     private fun navigateCalculateAnimation(action: NavDirections) {
         // Mostrar o texto "Calculando"
         binding.buttonCalcularImc.text = getString(R.string.text_calculando)
@@ -88,6 +107,13 @@ class CalculateImcFragment : Fragment() {
         }
     }
 
+    /**
+     * Adiciona um ouvinte de clique ao botão de cálculo.
+     * Verifica se os campos de entrada estão preenchidos corretamente.
+     * Se sim, obtém o peso e a altura do usuário a partir dos campos de texto,
+     * chama o método navigateCalculateAnimation() e atualiza o peso e a altura do usuário usando o userViewModel.
+     * Caso contrário, exibe um Toast informando que todos os campos devem ser preenchidos.
+     */
     private fun addNewUser() {
         val action = CalculateImcFragmentDirections.actionCalculateImcFragmentToImcFragment()
         binding.buttonCalcularImc.setOnClickListener {
@@ -97,21 +123,41 @@ class CalculateImcFragment : Fragment() {
                 navigateCalculateAnimation(action)
                 userViewModel.atualizarPesoAltura(usuarioPeso, usuarioAltura)
             } else {
-                Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error no calculo, verifique os campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    /**
+     * Verifica se os campos de entrada de peso e altura são válidos.
+     * @return true se os campos de entrada forem válidos, false caso contrário.
+     */
     private fun isEntryValid(): Boolean {
-        return userViewModel.isEntryValid(
-            binding.editTextPeso.text.toString(),
-            binding.editTextAltura.text.toString()
-        )
+        val peso = binding.editTextPeso.text.toString().toFloatOrNull()
+        val altura = binding.editTextAltura.text.toString().toFloatOrNull()
+
+        if (peso == null || peso <= 0) {
+            Toast.makeText(requireContext(), "Dados invalos. Peso e altura devem ser maior que zero.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        if (altura == null || altura <= 0) {
+            Toast.makeText(requireContext(), "Dados invalos. Peso e altura devem ser maior que zero.", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
     }
 
-    private fun initButtonBack(){
+    /**
+     * Inicializa o botão de voltar.
+     * Se a corrotina de atualização de peso e altura estiver em andamento, o botão de voltar cancela a corrotina.
+     * Em seguida, navega para a tela ImcFragment e exibe o BottomNavigationView.
+     */
+    private fun initButtonBack() {
         binding.iconBack.setOnClickListener {
-            //valida se a coroutina do update peso e altura esta em processo. se estiver o botao voltar cancela
+            // Valida se a corrotina do update peso e altura está em processo.
+            // Se estiver, o botão voltar cancela.
             if (userViewModel.atualizarPesoAlturaJob?.isActive == true) {
                 userViewModel.atualizarPesoAlturaJob?.cancel()
             }
@@ -119,9 +165,4 @@ class CalculateImcFragment : Fragment() {
             bottomNavigationView.visibility = View.VISIBLE
         }
     }
-
-
-
-
 }
-

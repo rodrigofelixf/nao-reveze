@@ -18,16 +18,19 @@ import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-
+/**
+ * Fragmento responsável por exibir as informações do IMC (Índice de Massa Corporal)
+ * persistidas no banco de dados. Possui botões que redirecionam para a classe CalculateImcFragment
+ * para atualização dos cálculos.
+ */
 class ImcFragment : Fragment() {
     private val binding: FragmentImcBinding by lazy {
         FragmentImcBinding.inflate(layoutInflater)
     }
-    private val userViewModel : UserViewModel by viewModels {
+    private val userViewModel: UserViewModel by viewModels {
         UserViewModelFactory((requireActivity().application as NaoRevezeApplication).repository)
     }
 
-    // variavel global dos resulados para as outras funcoes usarem
     private var resultado = 0f
 
     override fun onCreateView(
@@ -41,31 +44,33 @@ class ImcFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Observa as alterações no usuário e atualiza as saudações
         userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
             val saudacoes = "Olá, ${usuario?.nome}"
             binding.textViewSaudacoesNome.text = saudacoes
-
         }
-
     }
 
     override fun onStart() {
         super.onStart()
 
+        // Inicializa o resultado do IMC e configura a navegação para a classe CalculateImcFragment
         initResultadoImc()
-        openScreenImcCalculate()
-
-
+        setupImcCalculateScreenNavigation()
 
     }
 
-
+    /**
+     * Atualiza a barra de progresso com o resultado do IMC.
+     */
     private fun updateProgressBar() {
         binding.progressBar.progress = resultado.toInt()
     }
 
+    /**
+     * Inicializa o resultado do IMC e atualiza as informações na tela.
+     */
     private fun initResultadoImc() {
-
         userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
             val userPeso = usuario!!.peso
             val userAltura = usuario.altura
@@ -73,19 +78,8 @@ class ImcFragment : Fragment() {
 
             updateProgressBar()
 
-            if (resultado <= 39.9) {
-                binding.textViewResultadoImc.text = "%.1f".format(resultado)
-            } else {
-                binding.textViewResultadoImc.text = getString(R.string.text_mais_de_40)
-            }
 
-
-            binding.textViewPeso.text = "%.0f".format(userPeso)+" Kg"
-            binding.textViewAltura.text = "%.0f".format(userAltura)+" Cm"
-
-
-
-            // mostra o titulo do resultado do imc
+            // Define o título do resultado do IMC com base no valor calculado
             val tituloResultado = when {
                 resultado < 18.5 -> getString(R.string.peso_abaixo)
                 resultado < 25 -> getString(R.string.peso_normal)
@@ -96,7 +90,7 @@ class ImcFragment : Fragment() {
             }
             binding.textViewTituloTesultadoImc.text = tituloResultado
 
-            //  Regras do bottomsheet - manda informacoes para o bottomSheet
+            // Define o texto de informações para o BottomSheet com base no valor calculado
             val infoTextoBottomSheet = when {
                 resultado < 18.5 -> getString(R.string.text_info_resultado_peso_abaixo)
                 resultado < 25 -> getString(R.string.text_info_resultado_peso_normal)
@@ -105,8 +99,8 @@ class ImcFragment : Fragment() {
                 resultado < 40 -> getString(R.string.text_info_resultado_peso_obesidade02)
                 else -> getString(R.string.text_info_resultado_peso_obesidade03)
             }
-            // captura o resultado da variavel da regra do bottomsheet e coloca no evento de click do incone INFO
             binding.imageViewInfo.setOnClickListener {
+                // Exibe um BottomSheet com as informações do IMC
                 BottomSheetDialog(requireContext()).apply {
                     setContentView(R.layout.bottom_sheet_info_imc)
                     findViewById<TextView>(R.id.textView_imc_info)?.text = infoTextoBottomSheet
@@ -114,7 +108,12 @@ class ImcFragment : Fragment() {
                 }
             }
 
-            //  Regras do background - coloca um background na tabela do resultado do imc
+            // Atualiza o texto de resultado, peso e altura na tela
+            updateImcResult(resultado)
+            binding.textViewPeso.text = "%.0f".format(userPeso) + " Kg"
+            binding.textViewAltura.text = "%.0f".format(userAltura) + " Cm"
+
+            // Aplica o estilo de fundo na tabela do resultado do IMC com base no valor calculado
             when {
                 resultado < 18.5 -> binding.tableResultAbaixoPeso.setBackgroundResource(R.drawable.background_table)
                 resultado < 25 -> binding.tableResultNormal.setBackgroundResource(R.drawable.background_table)
@@ -123,29 +122,32 @@ class ImcFragment : Fragment() {
                 resultado < 40 -> binding.tableResultObesidade2Peso.setBackgroundResource(R.drawable.background_table)
                 resultado > 39.9 -> binding.tableResultObesidade3Peso.setBackgroundResource(R.drawable.background_table)
             }
-
-
-
-
-
         }
     }
 
-    private fun openScreenImcCalculate() {
-        binding.cardViewResultadoPeso.setOnClickListener {
+    /**
+     * Configura a navegação para a classe CalculateImcFragment ao clicar nos botões relacionados.
+     */
+    private fun setupImcCalculateScreenNavigation() {
+        val navigateToCalculateFragment = {
             findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
         }
-        binding.cardViewResultadoAltura.setOnClickListener {
-            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
-        }
-        binding.buttonTelaCalcular.setOnClickListener {
-            findNavController().navigate(R.id.action_imcFragment_to_calculateImcFragment)
-        }
+
+        binding.cardViewResultadoPeso.setOnClickListener { navigateToCalculateFragment() }
+        binding.cardViewResultadoAltura.setOnClickListener { navigateToCalculateFragment() }
+        binding.buttonTelaCalcular.setOnClickListener { navigateToCalculateFragment() }
     }
 
-
-
-
-
-
+    /**
+     * Atualiza o resultado do IMC e exibe-o na tela.
+     * Se o resultado for menor ou igual a 39.9, exibe o valor formatado com uma casa decimal.
+     * Caso contrário, exibe o texto "40+".
+     */
+    private fun updateImcResult(resultado: Float) {
+        if (resultado <= 39.9) {
+            binding.textViewResultadoImc.text = "%.1f".format(resultado)
+        } else {
+            binding.textViewResultadoImc.text = getString(R.string.text_mais_de_40)
+        }
+    }
 }
