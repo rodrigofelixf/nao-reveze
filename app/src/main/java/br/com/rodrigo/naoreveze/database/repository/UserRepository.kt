@@ -17,4 +17,8 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.obterUsuario()
     }
 
+    suspend fun atualizarPesoAltura(usuarioPeso: Float, usuarioAltura: Float) {
+        userDao.atualizaPesoAltura(userId = 1,usuarioPeso, usuarioAltura )
+    }
+
 }

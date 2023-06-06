@@ -20,4 +20,11 @@ interface UserDao {
     @Query("SELECT * FROM usuario WHERE userId = 1")
     fun obterUsuario(): LiveData<User?>
 
+    @Query("UPDATE usuario SET peso = :usuarioPeso, altura = :usuarioAltura WHERE userId = :userId ")
+    suspend fun atualizaPesoAltura(userId: Int = 1, usuarioPeso: Float, usuarioAltura: Float)
+
+
+
+
+
 }

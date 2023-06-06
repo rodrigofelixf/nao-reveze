@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -48,20 +49,32 @@ class UserHeightAndWeightFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        binding.buttonProximo.setOnClickListener {
-            findNavController().navigate(R.id.action_userHeightAndWeightFragment_to_mainActivity)
-            val nome = args.nome
-            val altura = binding.editTextAltura.text.toString().toFloat()
-            val peso = binding.editTextPeso.text.toString().toFloat()
-            userViewModel.insertOrUpdateUser(User(1, nome, peso, altura ))
-            requireActivity().finish()
-
-        }
-
-
-
+        addNewUser()
     }
+
+    private fun isEntryValid(): Boolean {
+        return userViewModel.isEntryValid(
+            binding.editTextPeso.text.toString(),
+            binding.editTextAltura.text.toString()
+        )
+    }
+
+    private fun addNewUser() {
+        binding.buttonProximo.setOnClickListener {
+            if (isEntryValid()) {
+                val nome = args.nome
+                val altura = binding.editTextAltura.text.toString().toFloat()
+                val peso = binding.editTextPeso.text.toString().toFloat()
+                userViewModel.insertOrUpdateUser(User(1, nome, altura, peso ))
+                findNavController().navigate(R.id.action_userHeightAndWeightFragment_to_mainActivity)
+                requireActivity().finish()
+            } else {
+                Toast.makeText(requireContext(), "Preencha todos os campos", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
+
 
 
 }

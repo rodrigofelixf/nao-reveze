@@ -6,19 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 
-import br.com.rodrigo.naoreveze.database.models.ImcModel
 import br.com.rodrigo.naoreveze.database.models.User
 import br.com.rodrigo.naoreveze.database.repository.UserRepository
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
 
-    var peso: MutableLiveData<Double> = MutableLiveData()
-    var altura: MutableLiveData<Double> = MutableLiveData()
-    var resultado: MutableLiveData<Double> = MutableLiveData()
-
     private val _users = MutableLiveData<List<User>>()
-    val users: LiveData<List<User>> get() = _users
+
+    var atualizarPesoAlturaJob: Job? = null
 
     fun insertOrUpdateUser(user: User) {
         viewModelScope.launch {
@@ -36,12 +34,26 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
     fun obterUsuario(): LiveData<User?> {
         return userRepository.obterUsuario()
     }
-
-
-    fun calcularImc() {
-        val model = ImcModel(peso.value!!, altura.value!!)
-        resultado.value = model.calcularImc()
+    fun atualizarPesoAltura(usuarioPeso: Float, usuarioAltura: Float) {
+        atualizarPesoAlturaJob = viewModelScope.launch {
+            delay(3_000)
+            userRepository.atualizarPesoAltura(usuarioPeso, usuarioAltura)
+        }
     }
+
+
+    fun calcularIMC(peso: Float, altura: Float) : Float {
+        val alturaMetros = altura / 100
+        return peso / (alturaMetros * alturaMetros)
+    }
+
+    fun isEntryValid(usuarioPeso: String, usuarioAltura: String): Boolean {
+        if (usuarioPeso.isNotBlank() && usuarioAltura.isNotBlank() && usuarioPeso != "0" && usuarioAltura != "0") {
+            return true
+        }
+        return false
+    }
+
 
 
 }

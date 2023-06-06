@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/cardView"
         android:gravity="start"
-        android:text="Qual o seu peso e a sua altura?"
+        android:text="Digite a sua altura e seu peso."
         android:textColor="@color/app_color_white"
         android:textSize="28sp"
         android:textStyle="bold"

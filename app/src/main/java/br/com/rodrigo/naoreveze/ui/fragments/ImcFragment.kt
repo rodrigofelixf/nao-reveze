@@ -7,13 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.rodrigo.naoreveze.R
+import br.com.rodrigo.naoreveze.application.NaoRevezeApplication
 
 import br.com.rodrigo.naoreveze.databinding.FragmentImcBinding
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
+import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -21,9 +23,12 @@ class ImcFragment : Fragment() {
     private val binding: FragmentImcBinding by lazy {
         FragmentImcBinding.inflate(layoutInflater)
     }
-    private val viewModel by lazy { ViewModelProvider(this).get(UserViewModel::class.java) }
+    private val userViewModel : UserViewModel by viewModels {
+        UserViewModelFactory((requireActivity().application as NaoRevezeApplication).repository)
+    }
 
-    private val args: ImcFragmentArgs by navArgs()
+    // variavel global dos resulados para as outras funcoes usarem
+    private var resultado = 0f
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,33 +41,38 @@ class ImcFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
+            val saudacoes = "Olá, ${usuario?.nome}"
+            binding.textViewSaudacoesNome.text = saudacoes
 
-
+        }
 
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
 
         initResultadoImc()
         openScreenImcCalculate()
+
 
 
     }
 
 
     private fun updateProgressBar() {
-        binding.progressBar.progress = viewModel.resultado.value!!.toInt()
+        binding.progressBar.progress = resultado.toInt()
     }
 
     private fun initResultadoImc() {
-        viewModel.altura.value = args.altura.toDouble()
-        viewModel.peso.value = args.peso.toDouble()
-        viewModel.calcularImc()
 
+        userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
+            val userPeso = usuario!!.peso
+            val userAltura = usuario.altura
+            resultado = userViewModel.calcularIMC(userPeso, userAltura)
 
-        viewModel.resultado.observe(this) { resultado ->
             updateProgressBar()
+
             if (resultado <= 39.9) {
                 binding.textViewResultadoImc.text = "%.1f".format(resultado)
             } else {
@@ -70,11 +80,12 @@ class ImcFragment : Fragment() {
             }
 
 
-            binding.textViewPeso.text = "${args.peso} Kg"
-            binding.textViewAltura.text = "${args.altura} Cm"
+            binding.textViewPeso.text = "%.0f".format(userPeso)+" Kg"
+            binding.textViewAltura.text = "%.0f".format(userAltura)+" Cm"
 
 
 
+            // mostra o titulo do resultado do imc
             val tituloResultado = when {
                 resultado < 18.5 -> getString(R.string.peso_abaixo)
                 resultado < 25 -> getString(R.string.peso_normal)
@@ -83,6 +94,7 @@ class ImcFragment : Fragment() {
                 resultado < 40 -> getString(R.string.peso_grau02)
                 else -> getString(R.string.peso_grau03)
             }
+            binding.textViewTituloTesultadoImc.text = tituloResultado
 
             //  Regras do bottomsheet - manda informacoes para o bottomSheet
             val infoTextoBottomSheet = when {
@@ -93,7 +105,14 @@ class ImcFragment : Fragment() {
                 resultado < 40 -> getString(R.string.text_info_resultado_peso_obesidade02)
                 else -> getString(R.string.text_info_resultado_peso_obesidade03)
             }
-
+            // captura o resultado da variavel da regra do bottomsheet e coloca no evento de click do incone INFO
+            binding.imageViewInfo.setOnClickListener {
+                BottomSheetDialog(requireContext()).apply {
+                    setContentView(R.layout.bottom_sheet_info_imc)
+                    findViewById<TextView>(R.id.textView_imc_info)?.text = infoTextoBottomSheet
+                    show()
+                }
+            }
 
             //  Regras do background - coloca um background na tabela do resultado do imc
             when {
@@ -106,21 +125,8 @@ class ImcFragment : Fragment() {
             }
 
 
-            // captura o resultado da variavel da regra do bottomsheet e coloca no evento de click do incone INFO
-            binding.imageViewInfo.setOnClickListener {
-                BottomSheetDialog(requireContext()).apply {
-                    setContentView(R.layout.bottom_sheet_info_imc)
-                    findViewById<TextView>(R.id.textView_imc_info)?.text = infoTextoBottomSheet
-                    show()
-                }
-            }
 
-            // validao de usuario que nao fez o calculo ainda - deixa os icones invisivel quando possivel
-            if (resultado.isNaN()) {
-                hideResultViews()
-            } else {
-                showResultViews(tituloResultado)
-            }
+
 
         }
     }
@@ -137,19 +143,9 @@ class ImcFragment : Fragment() {
         }
     }
 
-    private fun hideResultViews() {
-        binding.imageViewInfo.visibility = View.GONE
-        binding.progressBar.visibility = View.GONE
-        binding.textViewResultadoImc.visibility = View.GONE
-        binding.textViewTituloTesultadoImc.text = getString(R.string.titulo_resultado_imc)
-    }
 
-    private fun showResultViews(tituloResultado: String) {
-        binding.imageViewInfo.visibility = View.VISIBLE
-        binding.progressBar.visibility = View.VISIBLE
-        binding.textViewResultadoImc.visibility = View.VISIBLE
-        binding.textViewTituloTesultadoImc.text = tituloResultado
-    }
+
+
 
 
 }

@@ -46,14 +46,6 @@
             app:destination="@id/calculateImcFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out" />
-        <argument
-            android:name="altura"
-            app:argType="string"
-            android:defaultValue="0" />
-        <argument
-            android:name="peso"
-            app:argType="string"
-            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/calculateImcFragment"
@@ -66,9 +58,6 @@
             app:popUpTo="@id/imcFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out" />
-        <action
-            android:id="@+id/action_calculateImcFragment_to_splashFragment"
-            app:destination="@id/splashFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
