@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             delay(2_000)
-            userViewModel.obterUsuario().observe(this@SplashActivity) { user ->
+            userViewModel.getCurrentUser().observe(this@SplashActivity) { user ->
                 if (user != null) {
                     // Usuário já cadastrado, iniciar a HomeFragment pela Main Activity
                     val intent = Intent(this@SplashActivity, MainActivity::class.java)

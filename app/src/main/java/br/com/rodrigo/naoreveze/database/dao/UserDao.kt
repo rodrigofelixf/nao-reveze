@@ -5,23 +5,21 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
 import br.com.rodrigo.naoreveze.database.models.User
-import com.google.android.material.circularreveal.CircularRevealHelper.Strategy
 
 @Dao
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOrUpdateUser(user: User)
 
-    @Query("SELECT * FROM usuario")
+    @Query("SELECT * FROM user")
     suspend fun getUser(): List<User>
 
-    @Query("SELECT * FROM usuario WHERE userId = 1")
-    fun obterUsuario(): LiveData<User?>
+    @Query("SELECT * FROM user WHERE userId = 1")
+    fun getCurrentUser(): LiveData<User?>
 
-    @Query("UPDATE usuario SET peso = :usuarioPeso, altura = :usuarioAltura WHERE userId = :userId ")
-    suspend fun atualizaPesoAltura(userId: Int = 1, usuarioPeso: Float, usuarioAltura: Float)
+    @Query("UPDATE user SET user_weight = :userWeight, user_height = :userHeight WHERE userId = :userId ")
+    suspend fun updateWeightHeight(userId: Int = 1, userWeight: Float, userHeight: Float)
 
 
 

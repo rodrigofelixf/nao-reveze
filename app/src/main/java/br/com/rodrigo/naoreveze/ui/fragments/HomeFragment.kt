@@ -41,8 +41,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        userViewModel.obterUsuario().observe(viewLifecycleOwner) { usuario ->
-            val saudacoes = "Olá, ${usuario?.nome}"
+        userViewModel.getCurrentUser().observe(viewLifecycleOwner) { usuario ->
+            val saudacoes = "Olá, ${usuario?.userName}"
             binding.textViewSaudacoesNome.text = saudacoes
 
         }

@@ -13,12 +13,12 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.getUser()
     }
 
-    fun obterUsuario(): LiveData<User?> {
-        return userDao.obterUsuario()
+    fun getCurrentUser(): LiveData<User?> {
+        return userDao.getCurrentUser()
     }
 
-    suspend fun atualizarPesoAltura(usuarioPeso: Float, usuarioAltura: Float) {
-        userDao.atualizaPesoAltura(userId = 1,usuarioPeso, usuarioAltura )
+    suspend fun updateWeightHeight(userWeight: Float, userHeight: Float) {
+        userDao.updateWeightHeight(userId = 1,userWeight, userHeight )
     }
 
 }

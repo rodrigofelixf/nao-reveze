@@ -1,6 +1,5 @@
 package br.com.rodrigo.naoreveze.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -118,12 +117,12 @@ class CalculateImcFragment : Fragment() {
         val action = CalculateImcFragmentDirections.actionCalculateImcFragmentToImcFragment()
         binding.buttonCalcularImc.setOnClickListener {
             if (isEntryValid()) {
-                val usuarioPeso = binding.editTextPeso.text.toString().toFloat()
-                val usuarioAltura = binding.editTextAltura.text.toString().toFloat()
+                val userWeight = binding.editTextPeso.text.toString().toFloat()
+                val userHeight = binding.editTextAltura.text.toString().toFloat()
                 navigateCalculateAnimation(action)
-                userViewModel.atualizarPesoAltura(usuarioPeso, usuarioAltura)
+                userViewModel.updateWeightHeightJob(userWeight, userHeight)
             } else {
-                Toast.makeText(requireContext(), "Error no calculo, verifique os campos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Erro no calculo, verifique os campos", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -133,15 +132,15 @@ class CalculateImcFragment : Fragment() {
      * @return true se os campos de entrada forem válidos, false caso contrário.
      */
     private fun isEntryValid(): Boolean {
-        val peso = binding.editTextPeso.text.toString().toFloatOrNull()
-        val altura = binding.editTextAltura.text.toString().toFloatOrNull()
+        val userWeight = binding.editTextPeso.text.toString().toFloatOrNull()
+        val userHeight = binding.editTextAltura.text.toString().toFloatOrNull()
 
-        if (peso == null || peso <= 0) {
+        if (userWeight == null || userWeight <= 0) {
             Toast.makeText(requireContext(), "Dados invalos. Peso e altura devem ser maior que zero.", Toast.LENGTH_SHORT).show()
             return false
         }
 
-        if (altura == null || altura <= 0) {
+        if (userHeight == null || userHeight <= 0) {
             Toast.makeText(requireContext(), "Dados invalos. Peso e altura devem ser maior que zero.", Toast.LENGTH_SHORT).show()
             return false
         }
@@ -158,8 +157,8 @@ class CalculateImcFragment : Fragment() {
         binding.iconBack.setOnClickListener {
             // Valida se a corrotina do update peso e altura está em processo.
             // Se estiver, o botão voltar cancela.
-            if (userViewModel.atualizarPesoAlturaJob?.isActive == true) {
-                userViewModel.atualizarPesoAlturaJob?.cancel()
+            if (userViewModel.updateWeightHeightJob?.isActive == true) {
+                userViewModel.updateWeightHeightJob?.cancel()
             }
             findNavController().navigate(R.id.action_calculateImcFragment_to_imcFragment)
             bottomNavigationView.visibility = View.VISIBLE
