@@ -109,7 +109,7 @@ class ImcFragment : Fragment() {
 
             // Atualiza o texto de resultado, peso e altura na tela
             updateImcResult(resultBMI)
-            binding.textViewPeso.text = "%.0f".format(userWeight) + " Kg"
+            binding.textViewPeso.text = "%.1f".format(userWeight) + " Kg"
             binding.textViewAltura.text = "%.0f".format(userHeight) + " Cm"
 
             // Aplica o estilo de fundo na tabela do resultado do IMC com base no valor calculado

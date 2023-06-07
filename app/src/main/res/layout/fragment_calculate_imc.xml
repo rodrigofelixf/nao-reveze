@@ -59,6 +59,7 @@
             android:textColorHint="@color/seed"
             app:boxStrokeColor="@color/seed"
             app:counterEnabled="true"
+            app:counterTextColor="@color/seed"
             app:counterMaxLength="3"
             app:hintTextColor="@color/seed"
             app:startIconDrawable="@drawable/icon_altura"
@@ -87,7 +88,8 @@
             android:textColorHint="@color/seed"
             app:boxStrokeColor="@color/seed"
             app:counterEnabled="true"
-            app:counterMaxLength="4"
+            app:counterMaxLength="5"
+            app:counterTextColor="@color/seed"
             app:hintTextColor="@color/seed"
             app:startIconDrawable="@drawable/inc_imc"
             app:startIconTint="@color/seed">
@@ -97,8 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
-                android:maxEms="4"
-                android:maxLength="4"
+                android:maxEms="5"
+                android:maxLength="5"
                 android:maxLines="1"
                 android:textColor="@color/seed"
                 app:boxStrokeWidth="10dp" />
