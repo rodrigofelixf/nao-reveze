@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/userNameFragment"
+    app:startDestination="@id/onBoardingFragment"
     android:id="@+id/nav_graph_user_data">
     <fragment
         android:id="@+id/userNameFragment"
@@ -48,4 +48,13 @@
         android:id="@+id/splashActivity"
         android:name="br.com.rodrigo.naoreveze.ui.SplashActivity"
         android:label="SplashActivity" />
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="br.com.rodrigo.naoreveze.ui.fragments.onboarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_userNameFragment"
+            app:destination="@id/userNameFragment" />
+    </fragment>
 </navigation>

@@ -59,12 +59,5 @@
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out" />
     </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="br.com.rodrigo.naoreveze.ui.fragments.SplashFragment"
-        android:label="SplashFragment" >
-        <action
-            android:id="@+id/action_splashFragment_to_imcFragment"
-            app:destination="@id/imcFragment" />
-    </fragment>
+
 </navigation>

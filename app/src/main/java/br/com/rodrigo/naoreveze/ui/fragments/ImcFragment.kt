@@ -1,6 +1,7 @@
 package br.com.rodrigo.naoreveze.ui.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,7 @@ import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.application.NaoRevezeApplication
 
 import br.com.rodrigo.naoreveze.databinding.FragmentImcBinding
+import br.com.rodrigo.naoreveze.ui.MainActivity
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -48,6 +50,7 @@ class ImcFragment : Fragment() {
             val greetings = "Olá, ${user?.userName}"
             binding.textViewSaudacoesNome.text = greetings
         }
+
     }
 
     override fun onStart() {
