@@ -18,7 +18,7 @@ import br.com.rodrigo.naoreveze.ui.adapter.MusculosAdapter
 
 
 import br.com.rodrigo.naoreveze.databinding.FragmentTreinoBinding
-import br.com.rodrigo.naoreveze.database.models.MusculoModel
+import br.com.rodrigo.naoreveze.database.model.MusculoModel
 
 import java.text.Normalizer
 import java.util.Locale

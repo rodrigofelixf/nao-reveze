@@ -3,7 +3,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.rodrigo.naoreveze.databinding.MusculoItemBinding
-import br.com.rodrigo.naoreveze.database.models.MusculoModel
+import br.com.rodrigo.naoreveze.database.model.MusculoModel
 
 class MusculosAdapter(
     private var listaMusculoModels: List<MusculoModel>,

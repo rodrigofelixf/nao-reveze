@@ -1,4 +1,4 @@
-package br.com.rodrigo.naoreveze.database.models
+package br.com.rodrigo.naoreveze.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

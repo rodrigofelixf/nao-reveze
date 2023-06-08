@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.com.rodrigo.naoreveze.database.dao.UserDao
-import br.com.rodrigo.naoreveze.database.models.User
+import br.com.rodrigo.naoreveze.database.model.User
 
 @Database(entities = [User::class], version = 1)
 

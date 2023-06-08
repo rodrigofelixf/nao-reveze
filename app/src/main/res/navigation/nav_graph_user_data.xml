@@ -35,13 +35,17 @@
             app:destination="@id/userNameFragment"
             app:enterAnim="@anim/slide_in"
             app:exitAnim="@anim/slide_out" />
-        <action
-            android:id="@+id/action_userHeightAndWeightFragment_to_mainActivity"
-            app:destination="@id/mainActivity"
-            app:enterAnim="@anim/slide_in"
-            app:exitAnim="@anim/slide_out" />
         <argument
             android:name="nome"
             app:argType="string" />
+        <action
+            android:id="@+id/action_userHeightAndWeightFragment_to_splashActivity"
+            app:destination="@id/splashActivity"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out" />
     </fragment>
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="br.com.rodrigo.naoreveze.ui.SplashActivity"
+        android:label="SplashActivity" />
 </navigation>

@@ -84,7 +84,7 @@
             android:id="@+id/cardView_Home_perfil"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_marginEnd="40dp"
             app:cardCornerRadius="50dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -102,15 +102,16 @@
 
         <TextView
             android:id="@+id/textView_saudacoes_nome"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Olá, Rodrigo!"
+            android:text="Olá, 000000000000"
             android:textColor="@color/app_color_white"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/cardView_Home_perfil"
             app:layout_constraintStart_toStartOf="@id/cardView_Home_perfil"
+            app:layout_constraintEnd_toEndOf="@id/cardView_Home_perfil"
             app:layout_constraintTop_toBottomOf="@id/cardView_Home_perfil"
             app:layout_goneMarginTop="70dp" />
 
@@ -172,7 +173,7 @@
 
                 <TextView
                     android:id="@+id/textView_peso"
-                    android:layout_width="85dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"

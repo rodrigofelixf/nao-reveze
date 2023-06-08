@@ -1,11 +1,12 @@
 package br.com.rodrigo.naoreveze.ui.viewmodel
 
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import br.com.rodrigo.naoreveze.database.models.User
+import br.com.rodrigo.naoreveze.database.model.User
 import br.com.rodrigo.naoreveze.database.repository.UserRepository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -91,6 +92,8 @@ class UserViewModel(private val userRepository: UserRepository) : ViewModel() {
         }
         return false
     }
+
+
 }
 
 /**
