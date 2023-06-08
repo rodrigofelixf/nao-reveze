@@ -69,6 +69,14 @@
     <string name="progressButton_calcular">Calcular</string>
     <string name="text_mais_de_40">40.0+</string>
     <string name="text_nickname">Apelido</string>
+    <string name="titulo_onboard_1">Otimize seu tempo na academia!</string>
+    <string name="titulo_onboard_2">Acompanhe seu progresso</string>
+    <string name="titulo_onboard_3">Treinos personalizados e offline</string>
+    <string name="text_pular">Pular</string>
+    <string name="text_começar">Começar</string>
+    <string name="descrip_Onboard_1">Encontre substituições rápidas e eficientes dos exercícios para manter seu treino fluindo.</string>
+    <string name="descrip_Onboard_2">Verifique suas medidas e calcule seu Índice de Massa Corporal (IMC) diretamente no NaoReveze App.</string>
+    <string name="descrip_Onboard_3">Cadastre seus exercícios personalizados e acesse-os a qualquer momento, mesmo sem internet.</string>
 
 
 </resources>
