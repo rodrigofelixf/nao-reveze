@@ -3,137 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background_app"
     android:layout_height="match_parent"
+    android:background="@drawable/user_name_screen"
+    android:padding="16dp"
     tools:context=".ui.MainActivity">
 
 
 
-
-    <com.google.android.material.card.MaterialCardView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/card"
+    <androidx.appcompat.widget.AppCompatEditText
+        app:helperTextEnabled="true"
+        android:backgroundTint="@color/app_color_white"
+        app:helperText="Entre 3 e 12 caracteres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
-
-        <LinearLayout
-            android:background="@color/app_color_white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Media -->
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="194dp"
-                android:scaleType="centerCrop"/>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/imageView_info"
-                    style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:backgroundTint="@color/md_theme_dark_onSurfaceVariant"
-                    android:textColor="@color/seed"
-                    app:icon="@drawable/icon_info"
-                    app:iconTint="@color/md_theme_light_error"/>
-
-                <Button
-                    android:layout_marginStart="20dp"
-                    android:id="@+id/button_tela_calcular"
-                    style="@style/Widget.Material3.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:backgroundTint="@color/seed"
-                    android:text="Calcular"
-                    android:textColor="@color/app_color_white"
-                    app:icon="@drawable/inc_imc"
-                    app:iconTint="@color/app_color_white"/>
-
-
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView_Home_perfil"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="40dp"
-        app:cardCornerRadius="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ImageView
-            android:id="@+id/imageView_perfil_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/imagem_perfil2" />
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/textView_saudacoes_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Olá, Rodrigo!"
+        android:hint="Apelido"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textColorHint="@color/app_color_white"
         android:textColor="@color/app_color_white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@id/cardView_Home_perfil"
-        app:layout_constraintStart_toStartOf="@id/cardView_Home_perfil"
-        app:layout_constraintTop_toBottomOf="@id/cardView_Home_perfil"
-        app:layout_goneMarginTop="70dp" />
-
-    <ProgressBar
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:id="@+id/progress_bar"
-        style="@style/CircularDeterminateProgressBar"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:max="100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:progress="60" />
-
-    <TextView
-        android:id="@+id/textView_resultado_imc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/md_theme_light_onSurfaceVariant"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar"
-        tools:text="60%" />
-
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="89dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

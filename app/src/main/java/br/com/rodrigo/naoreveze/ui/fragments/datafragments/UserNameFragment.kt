@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.databinding.FragmentUserNameBinding
+import com.bumptech.glide.Glide
 
 
 /**
@@ -36,6 +38,7 @@ class UserNameFragment : Fragment() {
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         // Configura o listener de clique para o botão "Próximo"
         binding.buttonProximo.setOnClickListener { saveNickname() }

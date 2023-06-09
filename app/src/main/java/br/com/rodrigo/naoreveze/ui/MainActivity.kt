@@ -30,8 +30,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> {
                     navController.navigate(
                         R.id.homeFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.fade_in)
-                            .setExitAnim(R.anim.fade_out)
+                            .setEnterAnim(R.anim.slide_in)
+                            .setExitAnim(R.anim.slide_out)
+                            .setPopEnterAnim(R.anim.slide_in)
+                            .setPopExitAnim(R.anim.slide_out)
                             .build()
                     )
                     true
@@ -40,8 +42,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.treinoFragment -> {
                     navController.navigate(
                         R.id.treinoFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.fade_in)
-                            .setExitAnim(R.anim.fade_out)
+                            .setEnterAnim(R.anim.slide_in)
+                            .setExitAnim(R.anim.slide_out)
+                            .setPopEnterAnim(R.anim.slide_in)
+                            .setPopExitAnim(R.anim.slide_out)
                             .build()
                     )
                     true
@@ -50,8 +54,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.imcFragment -> {
                     navController.navigate(
                         R.id.imcFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.fade_in)
-                            .setExitAnim(R.anim.fade_out)
+                            .setEnterAnim(R.anim.slide_in)
+                            .setExitAnim(R.anim.slide_out)
+                            .setPopEnterAnim(R.anim.slide_in)
+                            .setPopExitAnim(R.anim.slide_out)
                             .build()
                     )
                     true
@@ -60,8 +66,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.perfilFragment -> {
                     navController.navigate(
                         R.id.perfilFragment, null, NavOptions.Builder()
-                            .setEnterAnim(R.anim.fade_in)
-                            .setExitAnim(R.anim.fade_out)
+                            .setEnterAnim(R.anim.slide_in)
+                            .setExitAnim(R.anim.slide_out)
+                            .setPopEnterAnim(R.anim.slide_in)
+                            .setPopExitAnim(R.anim.slide_out)
                             .build()
                     )
                     true

@@ -4,58 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@drawable/user_name_screen"
     tools:context=".ui.MainActivity">
 
     <TextView
         android:id="@+id/txt_peitoral_subistituicao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        app:layout_constraintBottom_toTopOf="@id/button_proximo"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/app_color_white"
+        android:layout_marginHorizontal="20dp"
         android:gravity="center_horizontal"
-        android:text="Bem-vindo(a). Digite seu apelido?"
-        android:textSize="28sp"
+        android:text="Digite seu nome"
+        android:textSize="36sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/cardView"
+
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="@color/md_theme_dark_onSurfaceVariant"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayoutNickname"
-        android:layout_width="match_parent"
-        app:endIconMode="clear_text"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="10dp"
-        app:counterMaxLength="12"
-        app:counterEnabled="true"
-        app:layout_constraintTop_toBottomOf="@id/txt_peitoral_subistituicao"
-        app:helperTextEnabled="true"
-        app:helperText="Entre 3 e 12 caracteres">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNickname"
+        <com.google.android.material.textfield.TextInputLayout
+            android:textColorHint="@color/seed"
+            app:boxStrokeColor="@color/seed"
+            app:counterTextColor="@color/seed"
+            app:helperTextTextColor="@color/seed"
+            app:endIconTint="@color/seed"
+            app:hintTextColor="@color/seed"
+            android:id="@+id/textInputLayoutNickname"
+            app:errorIconTint="@color/md_theme_light_error"
+            app:boxStrokeErrorColor="@color/md_theme_light_error"
+            app:errorTextColor="@color/md_theme_light_error"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/text_nickname"
-            android:inputType="textCapSentences"
-            android:maxEms="12"
-            android:maxLength="12"
-            android:maxLines="1"
-            android:padding="16dp" />
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="12"
+            app:endIconMode="clear_text"
+            app:helperText="Entre 3 e 12 caracteres"
+            app:helperTextEnabled="true"
+            app:layout_constraintTop_toBottomOf="@id/txt_peitoral_subistituicao">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNickname"
+                android:layout_width="match_parent"
+                android:textColor="@color/seed"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_nickname"
+                android:inputType="textCapSentences"
+                android:maxEms="12"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:padding="16dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/button_proximo"
-        android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/seed"
+        android:padding="16dp"
         android:text="Proximo"
+        android:textColor="@color/app_color_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
