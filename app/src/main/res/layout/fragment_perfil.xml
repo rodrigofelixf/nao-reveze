@@ -4,28 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/user_name_screen"
     android:padding="16dp"
     tools:context=".ui.MainActivity">
 
 
 
-    <androidx.appcompat.widget.AppCompatEditText
-        app:helperTextEnabled="true"
-        android:backgroundTint="@color/app_color_white"
-        app:helperText="Entre 3 e 12 caracteres"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Apelido"
-        android:gravity="center"
-        android:padding="16dp"
-        android:textColorHint="@color/app_color_white"
-        android:textColor="@color/app_color_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="89dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
