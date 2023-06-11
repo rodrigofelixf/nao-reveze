@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import br.com.rodrigo.naoreveze.R
 import br.com.rodrigo.naoreveze.application.NaoRevezeApplication
 import br.com.rodrigo.naoreveze.databinding.ActivitySplashBinding
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModel
 import br.com.rodrigo.naoreveze.ui.viewmodel.UserViewModelFactory
+import com.airbnb.lottie.LottieDrawable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -25,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
 
         lifecycleScope.launch {
-            delay(2_000)
+            delay(3_000)
             userViewModel.getCurrentUser().observe(this@SplashActivity) { user ->
                 if (user != null) {
                     // Usuário já cadastrado, iniciar a HomeFragment pela Main Activity

@@ -83,11 +83,5 @@ dependencies {
     //Glide image
     implementation 'com.github.bumptech.glide:glide:4.12.0'
 
-    implementation 'com.github.iren1:ruler-view:1.3.2'
-
-
-
-
-
-
+    implementation 'com.airbnb.android:lottie:3.7.0'
 }
