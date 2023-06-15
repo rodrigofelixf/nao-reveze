@@ -120,50 +120,52 @@ class TreinoFragment : Fragment() {
 
 
     private fun addDataToList() {
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Peitoral",
-                R.drawable.img_peitoral
+        if (listaDeMusculoModels.isEmpty()) {
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Peitoral",
+                    R.drawable.img_peitoral
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Costas",
-                R.drawable.img_costas1
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Costas",
+                    R.drawable.img_costas1
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Pernas",
-                R.drawable.img_pernas
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Pernas",
+                    R.drawable.img_pernas
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Bíceps e Tríceps",
-                R.drawable.img_triceps_biceps
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Bíceps e Tríceps",
+                    R.drawable.img_triceps_biceps
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Ombros",
-                R.drawable.img_ombros
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Ombros",
+                    R.drawable.img_ombros
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Abdômen",
-                R.drawable.img_abdomen4
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Abdômen",
+                    R.drawable.img_abdomen4
+                )
             )
-        )
-        listaDeMusculoModels.add(
-            MusculoModel(
-                "Aeróbicos",
-                R.drawable.img_aerobico2
+            listaDeMusculoModels.add(
+                MusculoModel(
+                    "Aeróbicos",
+                    R.drawable.img_aerobico2
+                )
             )
-        )
-
+        }
     }
+
     private fun clickRecyclerView() {
         binding.recyclerViewMusculos.adapter = MusculosAdapter(listaDeMusculoModels) { item ->
             when (item) {
