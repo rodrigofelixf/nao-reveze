@@ -85,7 +85,7 @@ class UserNameFragment : Fragment() {
             return false
         }
 
-        if (nickname.length < 3 || nickname.length > 20) {
+        if (nickname.length < 3 || nickname.length > 12) {
             binding.textInputLayoutNickname.error = "O apelido deve ter entre 3 e 12 caracteres"
             return false
         }

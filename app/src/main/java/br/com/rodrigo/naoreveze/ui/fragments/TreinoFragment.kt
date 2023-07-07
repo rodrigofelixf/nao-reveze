@@ -47,12 +47,6 @@ class TreinoFragment : Fragment() {
 
         binding.textViewResultadoEncontrado.visibility = View.GONE
 
-
-
-
-
-
-
         initRecyclerView()
         clickRecyclerView()
         animacaoRightToLeft(binding.recyclerViewMusculos)
